@@ -23,6 +23,7 @@
 		22A3A028179A6B8400C5B12F /* DCLSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A027179A6B8400C5B12F /* DCLSecondViewController.m */; };
 		22A3A02A179A6B8400C5B12F /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A029179A6B8400C5B12F /* second.png */; };
 		22A3A02C179A6B8400C5B12F /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A02B179A6B8400C5B12F /* second@2x.png */; };
+		490729E81B484F39B64A05A4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FACAF2D393DB465DA934D0E0 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,8 @@
 		22A3A027179A6B8400C5B12F /* DCLSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCLSecondViewController.m; sourceTree = "<group>"; };
 		22A3A029179A6B8400C5B12F /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		22A3A02B179A6B8400C5B12F /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		451CAD1D51314DF88BB8B727 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		FACAF2D393DB465DA934D0E0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 				22A3A005179A6B8400C5B12F /* UIKit.framework in Frameworks */,
 				22A3A007179A6B8400C5B12F /* Foundation.framework in Frameworks */,
 				22A3A009179A6B8400C5B12F /* CoreGraphics.framework in Frameworks */,
+				490729E81B484F39B64A05A4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +74,7 @@
 				22A3A00A179A6B8400C5B12F /* DrupalCamp Leuven */,
 				22A3A003179A6B8400C5B12F /* Frameworks */,
 				22A3A002179A6B8400C5B12F /* Products */,
+				451CAD1D51314DF88BB8B727 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +92,7 @@
 				22A3A004179A6B8400C5B12F /* UIKit.framework */,
 				22A3A006179A6B8400C5B12F /* Foundation.framework */,
 				22A3A008179A6B8400C5B12F /* CoreGraphics.framework */,
+				FACAF2D393DB465DA934D0E0 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -131,9 +137,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22A3A02F179A6B8400C5B12F /* Build configuration list for PBXNativeTarget "DrupalCamp Leuven" */;
 			buildPhases = (
+				D4087F2078494164BDD639F6 /* Check Pods Manifest.lock */,
 				22A39FFD179A6B8400C5B12F /* Sources */,
 				22A39FFE179A6B8400C5B12F /* Frameworks */,
 				22A39FFF179A6B8400C5B12F /* Resources */,
+				4D782C89B4024B4991D8C4E7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -189,6 +197,37 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4D782C89B4024B4991D8C4E7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+		D4087F2078494164BDD639F6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		22A39FFD179A6B8400C5B12F /* Sources */ = {
@@ -282,10 +321,12 @@
 		};
 		22A3A030179A6B8400C5B12F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 451CAD1D51314DF88BB8B727 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DrupalCamp Leuven/DrupalCamp Leuven-Prefix.pch";
 				INFOPLIST_FILE = "DrupalCamp Leuven/DrupalCamp Leuven-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -293,10 +334,12 @@
 		};
 		22A3A031179A6B8400C5B12F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 451CAD1D51314DF88BB8B727 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DrupalCamp Leuven/DrupalCamp Leuven-Prefix.pch";
 				INFOPLIST_FILE = "DrupalCamp Leuven/DrupalCamp Leuven-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -321,6 +364,7 @@
 				22A3A031179A6B8400C5B12F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

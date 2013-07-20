@@ -17,12 +17,14 @@
 		22A3A019179A6B8400C5B12F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A018179A6B8400C5B12F /* Default@2x.png */; };
 		22A3A01B179A6B8400C5B12F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A01A179A6B8400C5B12F /* Default-568h@2x.png */; };
 		22A3A01E179A6B8400C5B12F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A01C179A6B8400C5B12F /* MainStoryboard.storyboard */; };
-		22A3A021179A6B8400C5B12F /* DCLFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A020179A6B8400C5B12F /* DCLFirstViewController.m */; };
-		22A3A023179A6B8400C5B12F /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A022179A6B8400C5B12F /* first.png */; };
-		22A3A025179A6B8400C5B12F /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A024179A6B8400C5B12F /* first@2x.png */; };
-		22A3A028179A6B8400C5B12F /* DCLSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A027179A6B8400C5B12F /* DCLSecondViewController.m */; };
-		22A3A02A179A6B8400C5B12F /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A029179A6B8400C5B12F /* second.png */; };
-		22A3A02C179A6B8400C5B12F /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A02B179A6B8400C5B12F /* second@2x.png */; };
+		22A3A035179A6F1B00C5B12F /* tabbar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A033179A6F1B00C5B12F /* tabbar-background.png */; };
+		22A3A036179A6F1B00C5B12F /* tabbar-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A034179A6F1B00C5B12F /* tabbar-background@2x.png */; };
+		22A3A03A179A6F6E00C5B12F /* DCLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A039179A6F6E00C5B12F /* DCLTabBar.m */; };
+		22A3A03C179A718900C5B12F /* transparant.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A03B179A718900C5B12F /* transparant.png */; };
+		22A3A03F179A71C300C5B12F /* DCLAgendaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A03E179A71C300C5B12F /* DCLAgendaViewController.m */; };
+		22A3A042179A71CF00C5B12F /* DCLSpeakersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A041179A71CF00C5B12F /* DCLSpeakersViewController.m */; };
+		22A3A045179A71DF00C5B12F /* DCLLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A044179A71DF00C5B12F /* DCLLocationViewController.m */; };
+		22A3A048179A71E900C5B12F /* DCLAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A047179A71E900C5B12F /* DCLAboutViewController.m */; };
 		490729E81B484F39B64A05A4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FACAF2D393DB465DA934D0E0 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -41,14 +43,19 @@
 		22A3A018179A6B8400C5B12F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		22A3A01A179A6B8400C5B12F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		22A3A01D179A6B8400C5B12F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		22A3A01F179A6B8400C5B12F /* DCLFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCLFirstViewController.h; sourceTree = "<group>"; };
-		22A3A020179A6B8400C5B12F /* DCLFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCLFirstViewController.m; sourceTree = "<group>"; };
-		22A3A022179A6B8400C5B12F /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		22A3A024179A6B8400C5B12F /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		22A3A026179A6B8400C5B12F /* DCLSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCLSecondViewController.h; sourceTree = "<group>"; };
-		22A3A027179A6B8400C5B12F /* DCLSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCLSecondViewController.m; sourceTree = "<group>"; };
-		22A3A029179A6B8400C5B12F /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		22A3A02B179A6B8400C5B12F /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		22A3A033179A6F1B00C5B12F /* tabbar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-background.png"; sourceTree = "<group>"; };
+		22A3A034179A6F1B00C5B12F /* tabbar-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-background@2x.png"; sourceTree = "<group>"; };
+		22A3A038179A6F6E00C5B12F /* DCLTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLTabBar.h; sourceTree = "<group>"; };
+		22A3A039179A6F6E00C5B12F /* DCLTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCLTabBar.m; sourceTree = "<group>"; };
+		22A3A03B179A718900C5B12F /* transparant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transparant.png; sourceTree = "<group>"; };
+		22A3A03D179A71C300C5B12F /* DCLAgendaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLAgendaViewController.h; sourceTree = "<group>"; };
+		22A3A03E179A71C300C5B12F /* DCLAgendaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCLAgendaViewController.m; sourceTree = "<group>"; };
+		22A3A040179A71CF00C5B12F /* DCLSpeakersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLSpeakersViewController.h; sourceTree = "<group>"; };
+		22A3A041179A71CF00C5B12F /* DCLSpeakersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCLSpeakersViewController.m; sourceTree = "<group>"; };
+		22A3A043179A71DF00C5B12F /* DCLLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLLocationViewController.h; sourceTree = "<group>"; };
+		22A3A044179A71DF00C5B12F /* DCLLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCLLocationViewController.m; sourceTree = "<group>"; };
+		22A3A046179A71E900C5B12F /* DCLAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLAboutViewController.h; sourceTree = "<group>"; };
+		22A3A047179A71E900C5B12F /* DCLAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCLAboutViewController.m; sourceTree = "<group>"; };
 		451CAD1D51314DF88BB8B727 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		FACAF2D393DB465DA934D0E0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -100,18 +107,20 @@
 		22A3A00A179A6B8400C5B12F /* DrupalCamp Leuven */ = {
 			isa = PBXGroup;
 			children = (
+				22A3A037179A6F3A00C5B12F /* UI */,
+				22A3A032179A6F0200C5B12F /* Resources */,
 				22A3A013179A6B8400C5B12F /* DCLAppDelegate.h */,
 				22A3A014179A6B8400C5B12F /* DCLAppDelegate.m */,
 				22A3A01C179A6B8400C5B12F /* MainStoryboard.storyboard */,
-				22A3A01F179A6B8400C5B12F /* DCLFirstViewController.h */,
-				22A3A020179A6B8400C5B12F /* DCLFirstViewController.m */,
-				22A3A022179A6B8400C5B12F /* first.png */,
-				22A3A024179A6B8400C5B12F /* first@2x.png */,
-				22A3A026179A6B8400C5B12F /* DCLSecondViewController.h */,
-				22A3A027179A6B8400C5B12F /* DCLSecondViewController.m */,
-				22A3A029179A6B8400C5B12F /* second.png */,
-				22A3A02B179A6B8400C5B12F /* second@2x.png */,
 				22A3A00B179A6B8400C5B12F /* Supporting Files */,
+				22A3A03D179A71C300C5B12F /* DCLAgendaViewController.h */,
+				22A3A03E179A71C300C5B12F /* DCLAgendaViewController.m */,
+				22A3A040179A71CF00C5B12F /* DCLSpeakersViewController.h */,
+				22A3A041179A71CF00C5B12F /* DCLSpeakersViewController.m */,
+				22A3A043179A71DF00C5B12F /* DCLLocationViewController.h */,
+				22A3A044179A71DF00C5B12F /* DCLLocationViewController.m */,
+				22A3A046179A71E900C5B12F /* DCLAboutViewController.h */,
+				22A3A047179A71E900C5B12F /* DCLAboutViewController.m */,
 			);
 			path = "DrupalCamp Leuven";
 			sourceTree = "<group>";
@@ -128,6 +137,25 @@
 				22A3A01A179A6B8400C5B12F /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22A3A032179A6F0200C5B12F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				22A3A03B179A718900C5B12F /* transparant.png */,
+				22A3A033179A6F1B00C5B12F /* tabbar-background.png */,
+				22A3A034179A6F1B00C5B12F /* tabbar-background@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		22A3A037179A6F3A00C5B12F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				22A3A038179A6F6E00C5B12F /* DCLTabBar.h */,
+				22A3A039179A6F6E00C5B12F /* DCLTabBar.m */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,10 +217,9 @@
 				22A3A019179A6B8400C5B12F /* Default@2x.png in Resources */,
 				22A3A01B179A6B8400C5B12F /* Default-568h@2x.png in Resources */,
 				22A3A01E179A6B8400C5B12F /* MainStoryboard.storyboard in Resources */,
-				22A3A023179A6B8400C5B12F /* first.png in Resources */,
-				22A3A025179A6B8400C5B12F /* first@2x.png in Resources */,
-				22A3A02A179A6B8400C5B12F /* second.png in Resources */,
-				22A3A02C179A6B8400C5B12F /* second@2x.png in Resources */,
+				22A3A035179A6F1B00C5B12F /* tabbar-background.png in Resources */,
+				22A3A036179A6F1B00C5B12F /* tabbar-background@2x.png in Resources */,
+				22A3A03C179A718900C5B12F /* transparant.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,8 +263,11 @@
 			files = (
 				22A3A011179A6B8400C5B12F /* main.m in Sources */,
 				22A3A015179A6B8400C5B12F /* DCLAppDelegate.m in Sources */,
-				22A3A021179A6B8400C5B12F /* DCLFirstViewController.m in Sources */,
-				22A3A028179A6B8400C5B12F /* DCLSecondViewController.m in Sources */,
+				22A3A03A179A6F6E00C5B12F /* DCLTabBar.m in Sources */,
+				22A3A03F179A71C300C5B12F /* DCLAgendaViewController.m in Sources */,
+				22A3A042179A71CF00C5B12F /* DCLSpeakersViewController.m in Sources */,
+				22A3A045179A71DF00C5B12F /* DCLLocationViewController.m in Sources */,
+				22A3A048179A71E900C5B12F /* DCLAboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

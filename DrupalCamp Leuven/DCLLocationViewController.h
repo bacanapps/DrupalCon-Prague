@@ -1,5 +1,5 @@
 //
-//  DCLSecondViewController.h
+//  DCLLocationViewController.h
 //  DrupalCamp Leuven
 //
 //  Created by Tim Leytens on 20/07/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DCLSecondViewController : UIViewController
+@interface DCLLocationViewController : UIViewController
 
 @end

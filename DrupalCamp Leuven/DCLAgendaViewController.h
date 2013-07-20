@@ -1,5 +1,5 @@
 //
-//  DCLFirstViewController.h
+//  DCLAgendaViewController.h
 //  DrupalCamp Leuven
 //
 //  Created by Tim Leytens on 20/07/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DCLFirstViewController : UIViewController
+@interface DCLAgendaViewController : UIViewController
 
 @end

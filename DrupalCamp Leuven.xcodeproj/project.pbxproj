@@ -1,0 +1,328 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22A3A005179A6B8400C5B12F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A3A004179A6B8400C5B12F /* UIKit.framework */; };
+		22A3A007179A6B8400C5B12F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A3A006179A6B8400C5B12F /* Foundation.framework */; };
+		22A3A009179A6B8400C5B12F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A3A008179A6B8400C5B12F /* CoreGraphics.framework */; };
+		22A3A00F179A6B8400C5B12F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A00D179A6B8400C5B12F /* InfoPlist.strings */; };
+		22A3A011179A6B8400C5B12F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A010179A6B8400C5B12F /* main.m */; };
+		22A3A015179A6B8400C5B12F /* DCLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A014179A6B8400C5B12F /* DCLAppDelegate.m */; };
+		22A3A017179A6B8400C5B12F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A016179A6B8400C5B12F /* Default.png */; };
+		22A3A019179A6B8400C5B12F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A018179A6B8400C5B12F /* Default@2x.png */; };
+		22A3A01B179A6B8400C5B12F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A01A179A6B8400C5B12F /* Default-568h@2x.png */; };
+		22A3A01E179A6B8400C5B12F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A01C179A6B8400C5B12F /* MainStoryboard.storyboard */; };
+		22A3A021179A6B8400C5B12F /* DCLFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A020179A6B8400C5B12F /* DCLFirstViewController.m */; };
+		22A3A023179A6B8400C5B12F /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A022179A6B8400C5B12F /* first.png */; };
+		22A3A025179A6B8400C5B12F /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A024179A6B8400C5B12F /* first@2x.png */; };
+		22A3A028179A6B8400C5B12F /* DCLSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A3A027179A6B8400C5B12F /* DCLSecondViewController.m */; };
+		22A3A02A179A6B8400C5B12F /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A029179A6B8400C5B12F /* second.png */; };
+		22A3A02C179A6B8400C5B12F /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A3A02B179A6B8400C5B12F /* second@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		22A3A001179A6B8400C5B12F /* DrupalCamp Leuven.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DrupalCamp Leuven.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22A3A004179A6B8400C5B12F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		22A3A006179A6B8400C5B12F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		22A3A008179A6B8400C5B12F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		22A3A00C179A6B8400C5B12F /* DrupalCamp Leuven-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DrupalCamp Leuven-Info.plist"; sourceTree = "<group>"; };
+		22A3A00E179A6B8400C5B12F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		22A3A010179A6B8400C5B12F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		22A3A012179A6B8400C5B12F /* DrupalCamp Leuven-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DrupalCamp Leuven-Prefix.pch"; sourceTree = "<group>"; };
+		22A3A013179A6B8400C5B12F /* DCLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCLAppDelegate.h; sourceTree = "<group>"; };
+		22A3A014179A6B8400C5B12F /* DCLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCLAppDelegate.m; sourceTree = "<group>"; };
+		22A3A016179A6B8400C5B12F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		22A3A018179A6B8400C5B12F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		22A3A01A179A6B8400C5B12F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		22A3A01D179A6B8400C5B12F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		22A3A01F179A6B8400C5B12F /* DCLFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCLFirstViewController.h; sourceTree = "<group>"; };
+		22A3A020179A6B8400C5B12F /* DCLFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCLFirstViewController.m; sourceTree = "<group>"; };
+		22A3A022179A6B8400C5B12F /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		22A3A024179A6B8400C5B12F /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		22A3A026179A6B8400C5B12F /* DCLSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCLSecondViewController.h; sourceTree = "<group>"; };
+		22A3A027179A6B8400C5B12F /* DCLSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCLSecondViewController.m; sourceTree = "<group>"; };
+		22A3A029179A6B8400C5B12F /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		22A3A02B179A6B8400C5B12F /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22A39FFE179A6B8400C5B12F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22A3A005179A6B8400C5B12F /* UIKit.framework in Frameworks */,
+				22A3A007179A6B8400C5B12F /* Foundation.framework in Frameworks */,
+				22A3A009179A6B8400C5B12F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22A39FF8179A6B8400C5B12F = {
+			isa = PBXGroup;
+			children = (
+				22A3A00A179A6B8400C5B12F /* DrupalCamp Leuven */,
+				22A3A003179A6B8400C5B12F /* Frameworks */,
+				22A3A002179A6B8400C5B12F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22A3A002179A6B8400C5B12F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22A3A001179A6B8400C5B12F /* DrupalCamp Leuven.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22A3A003179A6B8400C5B12F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22A3A004179A6B8400C5B12F /* UIKit.framework */,
+				22A3A006179A6B8400C5B12F /* Foundation.framework */,
+				22A3A008179A6B8400C5B12F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		22A3A00A179A6B8400C5B12F /* DrupalCamp Leuven */ = {
+			isa = PBXGroup;
+			children = (
+				22A3A013179A6B8400C5B12F /* DCLAppDelegate.h */,
+				22A3A014179A6B8400C5B12F /* DCLAppDelegate.m */,
+				22A3A01C179A6B8400C5B12F /* MainStoryboard.storyboard */,
+				22A3A01F179A6B8400C5B12F /* DCLFirstViewController.h */,
+				22A3A020179A6B8400C5B12F /* DCLFirstViewController.m */,
+				22A3A022179A6B8400C5B12F /* first.png */,
+				22A3A024179A6B8400C5B12F /* first@2x.png */,
+				22A3A026179A6B8400C5B12F /* DCLSecondViewController.h */,
+				22A3A027179A6B8400C5B12F /* DCLSecondViewController.m */,
+				22A3A029179A6B8400C5B12F /* second.png */,
+				22A3A02B179A6B8400C5B12F /* second@2x.png */,
+				22A3A00B179A6B8400C5B12F /* Supporting Files */,
+			);
+			path = "DrupalCamp Leuven";
+			sourceTree = "<group>";
+		};
+		22A3A00B179A6B8400C5B12F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22A3A00C179A6B8400C5B12F /* DrupalCamp Leuven-Info.plist */,
+				22A3A00D179A6B8400C5B12F /* InfoPlist.strings */,
+				22A3A010179A6B8400C5B12F /* main.m */,
+				22A3A012179A6B8400C5B12F /* DrupalCamp Leuven-Prefix.pch */,
+				22A3A016179A6B8400C5B12F /* Default.png */,
+				22A3A018179A6B8400C5B12F /* Default@2x.png */,
+				22A3A01A179A6B8400C5B12F /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22A3A000179A6B8400C5B12F /* DrupalCamp Leuven */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22A3A02F179A6B8400C5B12F /* Build configuration list for PBXNativeTarget "DrupalCamp Leuven" */;
+			buildPhases = (
+				22A39FFD179A6B8400C5B12F /* Sources */,
+				22A39FFE179A6B8400C5B12F /* Frameworks */,
+				22A39FFF179A6B8400C5B12F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DrupalCamp Leuven";
+			productName = "DrupalCamp Leuven";
+			productReference = 22A3A001179A6B8400C5B12F /* DrupalCamp Leuven.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22A39FF9179A6B8400C5B12F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DCL;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Tim Leytens";
+			};
+			buildConfigurationList = 22A39FFC179A6B8400C5B12F /* Build configuration list for PBXProject "DrupalCamp Leuven" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 22A39FF8179A6B8400C5B12F;
+			productRefGroup = 22A3A002179A6B8400C5B12F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22A3A000179A6B8400C5B12F /* DrupalCamp Leuven */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22A39FFF179A6B8400C5B12F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22A3A00F179A6B8400C5B12F /* InfoPlist.strings in Resources */,
+				22A3A017179A6B8400C5B12F /* Default.png in Resources */,
+				22A3A019179A6B8400C5B12F /* Default@2x.png in Resources */,
+				22A3A01B179A6B8400C5B12F /* Default-568h@2x.png in Resources */,
+				22A3A01E179A6B8400C5B12F /* MainStoryboard.storyboard in Resources */,
+				22A3A023179A6B8400C5B12F /* first.png in Resources */,
+				22A3A025179A6B8400C5B12F /* first@2x.png in Resources */,
+				22A3A02A179A6B8400C5B12F /* second.png in Resources */,
+				22A3A02C179A6B8400C5B12F /* second@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22A39FFD179A6B8400C5B12F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22A3A011179A6B8400C5B12F /* main.m in Sources */,
+				22A3A015179A6B8400C5B12F /* DCLAppDelegate.m in Sources */,
+				22A3A021179A6B8400C5B12F /* DCLFirstViewController.m in Sources */,
+				22A3A028179A6B8400C5B12F /* DCLSecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		22A3A00D179A6B8400C5B12F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22A3A00E179A6B8400C5B12F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		22A3A01C179A6B8400C5B12F /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22A3A01D179A6B8400C5B12F /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22A3A02D179A6B8400C5B12F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		22A3A02E179A6B8400C5B12F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22A3A030179A6B8400C5B12F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DrupalCamp Leuven/DrupalCamp Leuven-Prefix.pch";
+				INFOPLIST_FILE = "DrupalCamp Leuven/DrupalCamp Leuven-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		22A3A031179A6B8400C5B12F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DrupalCamp Leuven/DrupalCamp Leuven-Prefix.pch";
+				INFOPLIST_FILE = "DrupalCamp Leuven/DrupalCamp Leuven-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22A39FFC179A6B8400C5B12F /* Build configuration list for PBXProject "DrupalCamp Leuven" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22A3A02D179A6B8400C5B12F /* Debug */,
+				22A3A02E179A6B8400C5B12F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22A3A02F179A6B8400C5B12F /* Build configuration list for PBXNativeTarget "DrupalCamp Leuven" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22A3A030179A6B8400C5B12F /* Debug */,
+				22A3A031179A6B8400C5B12F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22A39FF9179A6B8400C5B12F /* Project object */;
+}

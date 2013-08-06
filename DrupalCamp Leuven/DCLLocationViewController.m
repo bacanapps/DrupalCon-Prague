@@ -14,11 +14,19 @@
 
 @implementation DCLLocationViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil
+                                                        image:nil
+                                                          tag:0];
+
+        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"locationButton.png"]
+                      withFinishedUnselectedImage:[UIImage imageNamed:@"locationButton.png"]];
+
+        self.tabBarItem.imageInsets = UIEdgeInsetsMake(4, 0, -4, 0);
+
     }
     return self;
 }

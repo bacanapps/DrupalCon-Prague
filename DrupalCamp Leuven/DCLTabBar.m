@@ -30,18 +30,10 @@
 
 - (void)customize {
     UIImage *tabbarBg = [UIImage imageNamed:@"tabbar-background.png"];
-    //UIImage *tabBarSelected = [UIImage imageNamed:@"tabbar-background-pressed.png"];
+    UIImage *tabBarSelected = [UIImage imageNamed:@"transparant.png"];
     [self setBackgroundImage:tabbarBg];
-    //[self setSelectionIndicatorImage:tabBarSelected];
+    [self setSelectionIndicatorImage:tabBarSelected];
     [self setShadowImage:[UIImage imageNamed:@"transparant.png"]];
 }
 
-/*
-- (void)drawRect:(CGRect)rect {
-    UIColor *color = [UIColor whiteColor];
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColor(context, CGColorGetComponents( [color CGColor]));
-    CGContextFillRect(context, rect);
-}
-*/
 @end

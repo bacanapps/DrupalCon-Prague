@@ -8,11 +8,23 @@
 
 #import "DCLAppDelegate.h"
 
+#import "SessionsDataModel.h"
+
 @implementation DCLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+
+    NSManagedObjectContext *context = [[SessionsDataModel sharedDataModel] mainContext];
+    
+    if (context) {
+        NSLog(@"Context is ready!");
+
+    } else {
+        NSLog(@"Context was nil :(");
+    }
+    
     return YES;
 }
 							

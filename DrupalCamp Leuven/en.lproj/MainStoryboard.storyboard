@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller-->
         <scene sceneID="gZ2-sz-QKL">
             <objects>
                 <navigationController definesPresentationContext="YES" id="LEy-Wn-NB2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="B8o-DG-NtN"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eRe-Jw-plA">
+                    <tabBarItem key="tabBarItem" title="" id="B8o-DG-NtN"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eRe-Jw-plA" customClass="DCLNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="mdw-fD-KiU">
+                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
-                        <segue destination="fKd-r4-rAi" kind="relationship" relationship="rootViewController" id="kd1-QL-d2r"/>
+                        <segue destination="0Lt-zF-J2g" kind="relationship" relationship="rootViewController" id="1UX-Rx-mcV"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVm-gZ-syv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -21,25 +25,74 @@
             <point key="canvasLocation" x="641" y="-291"/>
         </scene>
         <!--Agenda View Controller-->
-        <scene sceneID="508-NP-5Wa">
+        <scene sceneID="IVZ-g7-4zl">
             <objects>
-                <viewController id="fKd-r4-rAi" customClass="DCLAgendaViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aaO-CE-7ra">
+                <viewController id="0Lt-zF-J2g" customClass="DCLAgendaViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y9n-fp-FYS">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" id="OVw-DP-VtW">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="logo.png" id="Hpc-ZU-Od1">
+                                        <rect key="frame" x="33" y="15" width="254" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="tZW-qH-k2F">
+                                        <rect key="frame" x="0.0" y="70" width="320" height="385"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="DMZ-bs-aX3">
+                                                <rect key="frame" x="10" y="0.0" width="300" height="385"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="0Lt-zF-J2g" id="3AL-TB-NNZ"/>
+                                                    <outlet property="delegate" destination="0Lt-zF-J2g" id="yp3-HN-Vc6"/>
+                                                </connections>
+                                            </tableView>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Aye-H3-LBm">
+                                                <rect key="frame" x="330" y="0.0" width="300" height="385"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="0Lt-zF-J2g" id="Dof-f7-QNf"/>
+                                                    <outlet property="delegate" destination="0Lt-zF-J2g" id="BkY-mg-k5X"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="0Lt-zF-J2g" id="EjU-p1-sQv"/>
+                                        </connections>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="dmL-JE-eU4"/>
+                    <navigationItem key="navigationItem" id="5Bd-wE-ZSu"/>
+                    <connections>
+                        <outlet property="day1" destination="DMZ-bs-aX3" id="ha3-J9-are"/>
+                        <outlet property="day2" destination="Aye-H3-LBm" id="4rY-hw-DGm"/>
+                        <outlet property="innerScrollView" destination="tZW-qH-k2F" id="jYE-TW-uoY"/>
+                        <outlet property="outerScrollView" destination="OVw-DP-VtW" id="Q4D-yL-jVl"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7pD-LM-Tnb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cNx-vk-yda" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1165" y="-291"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller-->
         <scene sceneID="HZa-EL-ZMR">
             <objects>
                 <navigationController definesPresentationContext="YES" id="TU3-jb-JVf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Tyu-Sk-ODJ"/>
+                    <tabBarItem key="tabBarItem" title="" id="Tyu-Sk-ODJ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bxU-ed-nzX">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -66,11 +119,11 @@
             </objects>
             <point key="canvasLocation" x="1165" y="435"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller-->
         <scene sceneID="QYF-jd-WbN">
             <objects>
                 <navigationController definesPresentationContext="YES" id="G6E-R0-aEk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="H7E-Dg-SRt"/>
+                    <tabBarItem key="tabBarItem" title="" id="H7E-Dg-SRt"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wZd-NP-FRc">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -82,11 +135,11 @@
             </objects>
             <point key="canvasLocation" x="633" y="1111"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller-->
         <scene sceneID="Vhz-cq-vk6">
             <objects>
                 <navigationController definesPresentationContext="YES" id="nH9-ge-jcG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="J5e-on-oEu"/>
+                    <tabBarItem key="tabBarItem" title="" id="J5e-on-oEu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CAk-Re-9C0">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -150,23 +203,9 @@
             <point key="canvasLocation" x="132" y="180"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="DCLAboutViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DCLAboutViewController.h"/>
-        </class>
-        <class className="DCLAgendaViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DCLAgendaViewController.h"/>
-        </class>
-        <class className="DCLLocationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DCLLocationViewController.h"/>
-        </class>
-        <class className="DCLSpeakersViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DCLSpeakersViewController.h"/>
-        </class>
-        <class className="DCLTabBar" superclassName="UITabBar">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DCLTabBar.h"/>
-        </class>
-    </classes>
+    <resources>
+        <image name="logo.png" width="254" height="41"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

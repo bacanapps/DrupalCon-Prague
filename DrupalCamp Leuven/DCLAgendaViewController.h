@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DCLAgendaViewController : UIViewController
+@interface DCLAgendaViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) IBOutlet UIScrollView *outerScrollView;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *innerScrollView;
+
+@property (strong, nonatomic) IBOutlet UITableView *day1;
+
+@property (strong, nonatomic) IBOutlet UITableView *day2;
 
 @end

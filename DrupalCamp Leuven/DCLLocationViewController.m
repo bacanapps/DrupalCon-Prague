@@ -7,12 +7,26 @@
 //
 
 #import "DCLLocationViewController.h"
+#import "DCLRegularFont.h"
+#import "DCLBoldFont.h"
+#import <MapKit/MapKit.h>
+#import "DCLAnnotation.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface DCLLocationViewController ()
+
+#define UIColorFromRGB(rgbValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+
+
+@interface DCLLocationViewController () <MKMapViewDelegate>
 
 @end
 
-@implementation DCLLocationViewController
+@implementation DCLLocationViewController 
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -34,7 +48,102 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    self.navigationItem.title = @"LOCATION";
+
+    _name.font = [DCLBoldFont sharedInstance];
+    _name.textColor = UIColorFromRGB(0x4b4745);
+
+    _subtitle.font = [UIFont fontWithName:@"OpenSans" size:11.0];
+    _subtitle.textColor = UIColorFromRGB(0x4b4745);
+
+    _address.font = [DCLRegularFont sharedInstance];
+    _address.textColor = UIColorFromRGB(0x4b4745);
+
+    _phone.font = [DCLRegularFont sharedInstance];
+    _phone.textColor = UIColorFromRGB(0x4b4745);
+
+    _website.font = [DCLRegularFont sharedInstance];
+    _website.textColor = UIColorFromRGB(0x4b4745);
+
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f, 20.0f, 15.0f, 19.0f)];
+    imageView.image = [UIImage imageNamed:@"location.png"];
+    [_scrollView addSubview:imageView];
+
+
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(20, 130, self.view.frame.size.width - 40, 240)];
+    backView.backgroundColor = UIColorFromRGB(0xffffff);
+
+    [backView setClipsToBounds:NO];
+    [backView.layer setCornerRadius:1];
+    [backView.layer setShadowOffset:CGSizeMake(0, 0)];
+    [backView.layer setShadowColor:[[UIColor lightGrayColor] CGColor]];
+    [backView.layer setShadowRadius:1];
+    [backView.layer setShadowOpacity:0.5];
+
+    _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+
+    
+    [_scrollView addSubview:backView];
+
+    if (IS_IPHONE_5) {
+        _scrollView.scrollEnabled = NO;
+    }
+
+    MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(23, 133, self.view.frame.size.width - 46, 234)];
+
+    [mapView setMapType:MKMapTypeStandard];
+    [mapView setZoomEnabled:YES];
+    [mapView setScrollEnabled:YES];
+
+    MKCoordinateRegion region = { {0.0, 0.0 }, { 0.0, 0.0 } };
+    region.center.latitude = 50.880679;
+    region.center.longitude = 4.674532;
+    region.span.longitudeDelta = 0.02f;
+    region.span.latitudeDelta = 0.02f;
+    [mapView setRegion:region animated:NO];
+
+    
+    DCLAnnotation *annotation = [[DCLAnnotation alloc] init];
+    annotation.lat = 50.880679;
+    annotation.lon = 4.674532;
+    [mapView addAnnotation:annotation];
+
+    [mapView setDelegate:self];
+
+    [_scrollView addSubview:mapView];
+
+    UIButton *routeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [routeButton addTarget:self
+                    action:@selector(showRoute)
+          forControlEvents:UIControlEventTouchDown];
+    [routeButton setTitle:@"Show route" forState:UIControlStateNormal];
+    routeButton.frame = CGRectMake(20, backView.frame.origin.y + backView.frame.size.height + 15, self.view.frame.size.width - 40, 55.0);
+    routeButton.backgroundColor = UIColorFromRGB(0xb93939);
+
+    [_scrollView addSubview:routeButton];
+
+    _scrollView.contentSize = CGSizeMake(320, routeButton.frame.origin.y + routeButton.frame.size.height + 15);
+
+
+}
+
+- (void)showRoute
+{
+    Class mapItemClass = [MKMapItem class];
+    if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
+    {
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(50.880679, 4.674532);
+        MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate
+                                                       addressDictionary:nil];
+        MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+        [mapItem setName:@"Katholieke Hogeschool Leuven - \"Gezondheidszorg en Technologie\""];
+
+        NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
+        MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+        [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem]
+                       launchOptions:launchOptions];
+    }
 }
 
 - (void)didReceiveMemoryWarning

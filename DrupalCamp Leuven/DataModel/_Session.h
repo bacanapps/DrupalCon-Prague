@@ -6,8 +6,11 @@
 
 extern const struct SessionAttributes {
 	__unsafe_unretained NSString *body;
+	__unsafe_unretained NSString *day;
+	__unsafe_unretained NSString *fav;
 	__unsafe_unretained NSString *from;
 	__unsafe_unretained NSString *level;
+	__unsafe_unretained NSString *room;
 	__unsafe_unretained NSString *serverId;
 	__unsafe_unretained NSString *special;
 	__unsafe_unretained NSString *title;
@@ -23,6 +26,9 @@ extern const struct SessionFetchedProperties {
 } SessionFetchedProperties;
 
 @class Speaker;
+
+
+
 
 
 
@@ -56,13 +62,37 @@ extern const struct SessionFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSString* day;
+
+
+
+//- (BOOL)validateDay:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* fav;
+
+
+
+@property BOOL favValue;
+- (BOOL)favValue;
+- (void)setFavValue:(BOOL)value_;
+
+//- (BOOL)validateFav:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSNumber* from;
 
 
 
-@property int16_t fromValue;
-- (int16_t)fromValue;
-- (void)setFromValue:(int16_t)value_;
+@property int32_t fromValue;
+- (int32_t)fromValue;
+- (void)setFromValue:(int32_t)value_;
 
 //- (BOOL)validateFrom:(id*)value_ error:(NSError**)error_;
 
@@ -79,6 +109,16 @@ extern const struct SessionFetchedProperties {
 - (void)setLevelValue:(int16_t)value_;
 
 //- (BOOL)validateLevel:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* room;
+
+
+
+//- (BOOL)validateRoom:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -126,9 +166,9 @@ extern const struct SessionFetchedProperties {
 
 
 
-@property int16_t toValue;
-- (int16_t)toValue;
-- (void)setToValue:(int16_t)value_;
+@property int32_t toValue;
+- (int32_t)toValue;
+- (void)setToValue:(int32_t)value_;
 
 //- (BOOL)validateTo:(id*)value_ error:(NSError**)error_;
 
@@ -146,9 +186,9 @@ extern const struct SessionFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet *speaker;
+@property (nonatomic, strong) Speaker *speaker;
 
-- (NSMutableSet*)speakerSet;
+//- (BOOL)validateSpeaker:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -157,11 +197,6 @@ extern const struct SessionFetchedProperties {
 @end
 
 @interface _Session (CoreDataGeneratedAccessors)
-
-- (void)addSpeaker:(NSSet*)value_;
-- (void)removeSpeaker:(NSSet*)value_;
-- (void)addSpeakerObject:(Speaker*)value_;
-- (void)removeSpeakerObject:(Speaker*)value_;
 
 @end
 
@@ -174,11 +209,26 @@ extern const struct SessionFetchedProperties {
 
 
 
+- (NSString*)primitiveDay;
+- (void)setPrimitiveDay:(NSString*)value;
+
+
+
+
+- (NSNumber*)primitiveFav;
+- (void)setPrimitiveFav:(NSNumber*)value;
+
+- (BOOL)primitiveFavValue;
+- (void)setPrimitiveFavValue:(BOOL)value_;
+
+
+
+
 - (NSNumber*)primitiveFrom;
 - (void)setPrimitiveFrom:(NSNumber*)value;
 
-- (int16_t)primitiveFromValue;
-- (void)setPrimitiveFromValue:(int16_t)value_;
+- (int32_t)primitiveFromValue;
+- (void)setPrimitiveFromValue:(int32_t)value_;
 
 
 
@@ -188,6 +238,12 @@ extern const struct SessionFetchedProperties {
 
 - (int16_t)primitiveLevelValue;
 - (void)setPrimitiveLevelValue:(int16_t)value_;
+
+
+
+
+- (NSString*)primitiveRoom;
+- (void)setPrimitiveRoom:(NSString*)value;
 
 
 
@@ -219,8 +275,8 @@ extern const struct SessionFetchedProperties {
 - (NSNumber*)primitiveTo;
 - (void)setPrimitiveTo:(NSNumber*)value;
 
-- (int16_t)primitiveToValue;
-- (void)setPrimitiveToValue:(int16_t)value_;
+- (int32_t)primitiveToValue;
+- (void)setPrimitiveToValue:(int32_t)value_;
 
 
 
@@ -232,8 +288,8 @@ extern const struct SessionFetchedProperties {
 
 
 
-- (NSMutableSet*)primitiveSpeaker;
-- (void)setPrimitiveSpeaker:(NSMutableSet*)value;
+- (Speaker*)primitiveSpeaker;
+- (void)setPrimitiveSpeaker:(Speaker*)value;
 
 
 @end

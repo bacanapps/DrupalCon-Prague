@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CC6FCC51-9C1E-4A86-81B8-E40B369F7BC9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DrupalCamp Leuven</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5EBB255F-A8F7-4E75-A632-DCBFB7606DDE</key>
+		<string>ssh://github.com/TimLeytens/DrupalCamp-Leuven.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DrupalCamp Leuven.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5EBB255F-A8F7-4E75-A632-DCBFB7606DDE</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/TimLeytens/DrupalCamp-Leuven.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5EBB255F-A8F7-4E75-A632-DCBFB7606DDE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5EBB255F-A8F7-4E75-A632-DCBFB7606DDE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DrupalCamp Leuven</string>
+		</dict>
+	</array>
+</dict>
+</plist>

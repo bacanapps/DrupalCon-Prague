@@ -35,16 +35,13 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     return self;
 }
 
-- (void)drawRect:(CGRect)rect {
-    UIColor *color = UIColorFromRGB(0xFFFFFF);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColor(context, CGColorGetComponents([color CGColor]));
-    CGContextFillRect(context, rect);
-}
-
 
 -(void)customize
 {
+
+    [self setBackgroundColor:[UIColor whiteColor]];
+    [self setBackgroundImage:[UIImage imageNamed:@"navBackground.png"] forBarMetrics:UIBarMetricsDefault];
+    [self setShadowImage:[[UIImage alloc] init]];
 
     [self setTitleTextAttributes: @{
                                 UITextAttributeTextColor: UIColorFromRGB(0x444444),
@@ -52,10 +49,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
                          UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 0.0f)],
                                      UITextAttributeFont: [DCLLightFont sharedInstance]
     }];
-
-    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height, self.frame.size.width, 1)];
-    backgroundView.backgroundColor = UIColorFromRGB(0xdcdcdc);
-    [self insertSubview:backgroundView atIndex:0];
 
 }
 

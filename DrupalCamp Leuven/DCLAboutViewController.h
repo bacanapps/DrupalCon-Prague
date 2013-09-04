@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DCLAboutViewController : UIViewController
+#import "DCLUIViewController.h"
+#import "IFTweetLabel.h"
+
+@interface DCLAboutViewController : DCLUIViewController
+
+@property (strong, nonatomic) IBOutlet UILabel *infoLabel;
+@property (strong, nonatomic) IBOutlet UILabel *proudly;
+@property (strong, nonatomic) IBOutlet UIView *seperator;
+@property (strong, nonatomic) IBOutlet UIView *seperator2;
+@property (strong, nonatomic) IFTweetLabel *namesLabel;
+@property (strong, nonatomic) IFTweetLabel *codeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *bronCode;
 
 @end

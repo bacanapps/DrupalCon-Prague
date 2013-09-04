@@ -4,6 +4,7 @@
 #import "_Speaker.h"
 
 const struct SpeakerAttributes SpeakerAttributes = {
+	.avatar = @"avatar",
 	.company = @"company",
 	.firstName = @"firstName",
 	.lastName = @"lastName",
@@ -53,6 +54,13 @@ const struct SpeakerFetchedProperties SpeakerFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic avatar;
+
+
 
 
 

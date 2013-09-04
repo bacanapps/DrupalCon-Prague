@@ -93,7 +93,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="TU3-jb-JVf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="Tyu-Sk-ODJ"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bxU-ed-nzX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bxU-ed-nzX" customClass="DCLNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -111,9 +111,56 @@
                     <view key="view" contentMode="scaleToFill" id="vcZ-nk-t6m">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" id="hO8-Nk-6eq">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="5Ec-7B-KPB">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ixV-dV-GbJ">
+                                                <rect key="frame" x="10" y="10" width="300" height="435"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="OLn-L8-nE4" id="hhH-5v-Tzg"/>
+                                                    <outlet property="delegate" destination="OLn-L8-nE4" id="zCS-rV-AXo"/>
+                                                </connections>
+                                            </tableView>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rRA-S0-hKg">
+                                                <rect key="frame" x="330" y="10" width="300" height="435"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="OLn-L8-nE4" id="HFX-2z-w9i"/>
+                                                    <outlet property="delegate" destination="OLn-L8-nE4" id="oVB-bB-PPE"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                        <connections>
+                                            <outlet property="delegate" destination="OLn-L8-nE4" id="M6p-aW-x7z"/>
+                                        </connections>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="OLn-L8-nE4" id="M8A-1f-gJ0"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="K1r-Qc-9hl"/>
+                    <connections>
+                        <outlet property="day1" destination="ixV-dV-GbJ" id="4ah-GW-unq"/>
+                        <outlet property="day2" destination="rRA-S0-hKg" id="6Od-JB-XJv"/>
+                        <outlet property="outerScrollView" destination="hO8-Nk-6eq" id="jA0-xB-FlB"/>
+                        <outlet property="scrollView" destination="5Ec-7B-KPB" id="Fxo-Rh-6Wl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wff-Uj-SE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -124,7 +171,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="G6E-R0-aEk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="H7E-Dg-SRt"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wZd-NP-FRc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wZd-NP-FRc" customClass="DCLNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -140,7 +187,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="nH9-ge-jcG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="J5e-on-oEu"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CAk-Re-9C0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CAk-Re-9C0" customClass="DCLNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -158,9 +205,46 @@
                     <view key="view" contentMode="scaleToFill" id="akg-Yi-KM6">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" text="Open source mobile app for DrupalCamp. First used for DrupalCamp Leuven 2013." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cCK-fd-M2K">
+                                <rect key="frame" x="20" y="20" width="280" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" text="Proudly built by..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="41u-DS-c1o">
+                                <rect key="frame" x="20" y="110" width="280" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" text="Source code" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2g9-Vo-dvv">
+                                <rect key="frame" x="20" y="220" width="280" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" id="web-b6-wo8">
+                                <rect key="frame" x="20" y="98" width="280" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="oy9-hr-KHq">
+                                <rect key="frame" x="20" y="210" width="280" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="gmZ-Re-2cC"/>
+                    <connections>
+                        <outlet property="bronCode" destination="2g9-Vo-dvv" id="p6O-I3-di4"/>
+                        <outlet property="infoLabel" destination="cCK-fd-M2K" id="d0m-eg-4bk"/>
+                        <outlet property="proudly" destination="41u-DS-c1o" id="Hyp-We-ceJ"/>
+                        <outlet property="seperator" destination="web-b6-wo8" id="x98-pi-r4E"/>
+                        <outlet property="seperator2" destination="oy9-hr-KHq" id="2u3-xR-Gbi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePt-b7-Ffp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -170,12 +254,56 @@
         <scene sceneID="0CO-nM-e9Y">
             <objects>
                 <viewController id="UbY-G7-oaZ" customClass="DCLLocationViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rQE-wR-gCF">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" id="9TJ-Fa-PwM">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Katholieke Hogeschool Leuven" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m9j-NG-Sea">
+                                <rect key="frame" x="45" y="15" width="257" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Departement &quot;Gezondheidszorg en Technologie&quot;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Vb-C5-tkl">
+                                <rect key="frame" x="45" y="35" width="370" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Herestraat 49, 3000 Leuven" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6gX-RB-5F0">
+                                <rect key="frame" x="45" y="55" width="211" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="T. 016 37 52 00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g82-BZ-tDm">
+                                <rect key="frame" x="45" y="75" width="120" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="W. khleuven.be‎" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Aac-X3-qEV">
+                                <rect key="frame" x="45" y="95" width="118" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </scrollView>
                     <navigationItem key="navigationItem" id="n0J-xf-rEM"/>
+                    <connections>
+                        <outlet property="address" destination="6gX-RB-5F0" id="Ps5-PO-ssX"/>
+                        <outlet property="name" destination="m9j-NG-Sea" id="UVc-fo-I6X"/>
+                        <outlet property="phone" destination="g82-BZ-tDm" id="Gha-Ny-NQr"/>
+                        <outlet property="scrollView" destination="9TJ-Fa-PwM" id="wWU-Zi-tWH"/>
+                        <outlet property="subtitle" destination="8Vb-C5-tkl" id="9FP-yN-p5L"/>
+                        <outlet property="website" destination="Aac-X3-qEV" id="N7m-4C-s3h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHJ-Xb-laj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DCLLocationViewController : UIViewController
+#import "DCLUIViewController.h"
+
+@interface DCLLocationViewController : DCLUIViewController
+
+@property (strong, nonatomic) IBOutlet UILabel *name;
+@property (strong, nonatomic) IBOutlet UILabel *subtitle;
+@property (strong, nonatomic) IBOutlet UILabel *address;
+@property (strong, nonatomic) IBOutlet UILabel *phone;
+@property (strong, nonatomic) IBOutlet UILabel *website;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

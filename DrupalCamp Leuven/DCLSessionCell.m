@@ -11,8 +11,6 @@ colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-#import <QuartzCore/QuartzCore.h>
-
 #import "DCLSessionCell.h"
 #import "DCLBoldFont.h"
 #import "DCLRegularFont.h"
@@ -23,6 +21,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+
+        self.backgroundColor = [UIColor clearColor];
 
         _containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 94)];
         _containerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background-cell.png"]];
@@ -47,23 +47,21 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         [self.contentView addSubview:_timeSlot];
 
         UIImage *favButtonImage = [UIImage imageNamed:@"fav.png"];
-        UIImage *favButtonImageActive = [UIImage imageNamed:@"fav.png"];
-        UIButton *favButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIImage *favButtonImageActive = [UIImage imageNamed:@"fav_active.png"];
+        _favButton = [UIButton buttonWithType:UIButtonTypeCustom];
 
-        [favButton setBackgroundImage:favButtonImage forState:UIControlStateNormal];
-        [favButton setBackgroundImage:favButtonImageActive forState:UIControlStateHighlighted];
+        [_favButton setBackgroundImage:favButtonImage forState:UIControlStateNormal];
+        [_favButton setBackgroundImage:favButtonImageActive forState:UIControlStateSelected];
 
-        [favButton setFrame:CGRectMake(262, 65, favButtonImage.size.width, favButtonImage.size.height)];
-
-        [favButton addTarget:self
-                      action:@selector(favoriteEvent)
-            forControlEvents:UIControlEventTouchDown];
+        [_favButton setFrame:CGRectMake(262, 65, favButtonImage.size.width, favButtonImage.size.height)];
         
-        [self.contentView addSubview:favButton];
+        [self.contentView addSubview:_favButton];
 
 
         UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, 60, 280, 1)];
         line.backgroundColor = UIColorFromRGB(0xe5e5e5);
+
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
         [self.contentView addSubview:line];
 
     }
@@ -75,10 +73,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-}
-
-- (void)favoriteEvent
-{
 }
 
 @end

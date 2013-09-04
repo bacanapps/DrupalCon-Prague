@@ -5,6 +5,7 @@
 
 
 extern const struct SpeakerAttributes {
+	__unsafe_unretained NSString *avatar;
 	__unsafe_unretained NSString *company;
 	__unsafe_unretained NSString *firstName;
 	__unsafe_unretained NSString *lastName;
@@ -29,6 +30,7 @@ extern const struct SpeakerFetchedProperties {
 
 
 
+
 @interface SpeakerID : NSManagedObjectID {}
 @end
 
@@ -37,6 +39,16 @@ extern const struct SpeakerFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (SpeakerID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSString* avatar;
+
+
+
+//- (BOOL)validateAvatar:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -126,6 +138,12 @@ extern const struct SpeakerFetchedProperties {
 @end
 
 @interface _Speaker (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveAvatar;
+- (void)setPrimitiveAvatar:(NSString*)value;
+
+
 
 
 - (NSString*)primitiveCompany;

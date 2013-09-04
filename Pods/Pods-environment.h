@@ -12,12 +12,23 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking 2
 #define COCOAPODS_VERSION_PATCH_AFNetworking 1
 
-// GoogleAnalytics-iOS-SDK
-#define COCOAPODS_POD_AVAILABLE_GoogleAnalytics_iOS_SDK
-// This library does not follow semantic-versioning,
-// so we were not able to define version macros.
-// Please contact the author.
-// Version: 2.0beta4.
+// MBProgressHUD
+#define COCOAPODS_POD_AVAILABLE_MBProgressHUD
+#define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
+#define COCOAPODS_VERSION_MINOR_MBProgressHUD 7
+#define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
+
+// PHFRefreshControl
+#define COCOAPODS_POD_AVAILABLE_PHFRefreshControl
+#define COCOAPODS_VERSION_MAJOR_PHFRefreshControl 1
+#define COCOAPODS_VERSION_MINOR_PHFRefreshControl 0
+#define COCOAPODS_VERSION_PATCH_PHFRefreshControl 0
+
+// RegexKitLite
+#define COCOAPODS_POD_AVAILABLE_RegexKitLite
+#define COCOAPODS_VERSION_MAJOR_RegexKitLite 4
+#define COCOAPODS_VERSION_MINOR_RegexKitLite 0
+#define COCOAPODS_VERSION_PATCH_RegexKitLite 0
 
 // SDURLCache
 #define COCOAPODS_POD_AVAILABLE_SDURLCache

@@ -5,8 +5,11 @@
 
 const struct SessionAttributes SessionAttributes = {
 	.body = @"body",
+	.day = @"day",
+	.fav = @"fav",
 	.from = @"from",
 	.level = @"level",
+	.room = @"room",
 	.serverId = @"serverId",
 	.special = @"special",
 	.title = @"title",
@@ -47,6 +50,11 @@ const struct SessionFetchedProperties SessionFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"favValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"fav"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"fromValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"from"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -86,26 +94,59 @@ const struct SessionFetchedProperties SessionFetchedProperties = {
 
 
 
+@dynamic day;
+
+
+
+
+
+
+@dynamic fav;
+
+
+
+- (BOOL)favValue {
+	NSNumber *result = [self fav];
+	return [result boolValue];
+}
+
+- (void)setFavValue:(BOOL)value_ {
+	[self setFav:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveFavValue {
+	NSNumber *result = [self primitiveFav];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveFavValue:(BOOL)value_ {
+	[self setPrimitiveFav:[NSNumber numberWithBool:value_]];
+}
+
+
+
+
+
 @dynamic from;
 
 
 
-- (int16_t)fromValue {
+- (int32_t)fromValue {
 	NSNumber *result = [self from];
-	return [result shortValue];
+	return [result intValue];
 }
 
-- (void)setFromValue:(int16_t)value_ {
-	[self setFrom:[NSNumber numberWithShort:value_]];
+- (void)setFromValue:(int32_t)value_ {
+	[self setFrom:[NSNumber numberWithInt:value_]];
 }
 
-- (int16_t)primitiveFromValue {
+- (int32_t)primitiveFromValue {
 	NSNumber *result = [self primitiveFrom];
-	return [result shortValue];
+	return [result intValue];
 }
 
-- (void)setPrimitiveFromValue:(int16_t)value_ {
-	[self setPrimitiveFrom:[NSNumber numberWithShort:value_]];
+- (void)setPrimitiveFromValue:(int32_t)value_ {
+	[self setPrimitiveFrom:[NSNumber numberWithInt:value_]];
 }
 
 
@@ -133,6 +174,13 @@ const struct SessionFetchedProperties SessionFetchedProperties = {
 - (void)setPrimitiveLevelValue:(int16_t)value_ {
 	[self setPrimitiveLevel:[NSNumber numberWithShort:value_]];
 }
+
+
+
+
+
+@dynamic room;
+
 
 
 
@@ -201,22 +249,22 @@ const struct SessionFetchedProperties SessionFetchedProperties = {
 
 
 
-- (int16_t)toValue {
+- (int32_t)toValue {
 	NSNumber *result = [self to];
-	return [result shortValue];
+	return [result intValue];
 }
 
-- (void)setToValue:(int16_t)value_ {
-	[self setTo:[NSNumber numberWithShort:value_]];
+- (void)setToValue:(int32_t)value_ {
+	[self setTo:[NSNumber numberWithInt:value_]];
 }
 
-- (int16_t)primitiveToValue {
+- (int32_t)primitiveToValue {
 	NSNumber *result = [self primitiveTo];
-	return [result shortValue];
+	return [result intValue];
 }
 
-- (void)setPrimitiveToValue:(int16_t)value_ {
-	[self setPrimitiveTo:[NSNumber numberWithShort:value_]];
+- (void)setPrimitiveToValue:(int32_t)value_ {
+	[self setPrimitiveTo:[NSNumber numberWithInt:value_]];
 }
 
 
@@ -232,15 +280,6 @@ const struct SessionFetchedProperties SessionFetchedProperties = {
 
 @dynamic speaker;
 
-	
-- (NSMutableSet*)speakerSet {
-	[self willAccessValueForKey:@"speaker"];
-  
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"speaker"];
-  
-	[self didAccessValueForKey:@"speaker"];
-	return result;
-}
 	
 
 

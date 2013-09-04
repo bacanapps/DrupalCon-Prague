@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import "DCLUIViewController.h"
 
-@interface DCLAgendaViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@interface DCLAgendaViewController : DCLUIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *outerScrollView;
 
@@ -17,5 +20,9 @@
 @property (strong, nonatomic) IBOutlet UITableView *day1;
 
 @property (strong, nonatomic) IBOutlet UITableView *day2;
+
+@property (strong, nonatomic) NSFetchedResultsController *firstFetchedResultsController;
+
+@property (strong, nonatomic) NSFetchedResultsController *secondFetchedResultsController;
 
 @end

@@ -40,14 +40,13 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 {
 
     [self setBackgroundColor:[UIColor whiteColor]];
-    [self setBackgroundImage:[UIImage imageNamed:@"navBackground.png"] forBarMetrics:UIBarMetricsDefault];
-    [self setShadowImage:[[UIImage alloc] init]];
+    [self setBackgroundImage:[UIImage imageNamed:@"navbar.png"] forBarMetrics:UIBarMetricsDefault];
 
     [self setTitleTextAttributes: @{
-                                UITextAttributeTextColor: UIColorFromRGB(0x444444),
-                          UITextAttributeTextShadowColor: [UIColor clearColor],
-                         UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 0.0f)],
-                                     UITextAttributeFont: [DCLLightFont sharedInstance]
+                                UITextAttributeTextColor: UIColorFromRGB(0xFFFFFF),
+                          UITextAttributeTextShadowColor: [UIColor darkGrayColor],
+                         UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(1.0f, 1.0f)],
+                                     UITextAttributeFont: [UIFont fontWithName:@"PT Sans Narrow" size:22.0]
     }];
 
 }

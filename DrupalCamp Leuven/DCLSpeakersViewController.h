@@ -15,9 +15,7 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UITableView *day1;
-@property (strong, nonatomic) IBOutlet UITableView *day2;
 @property (strong, nonatomic) NSFetchedResultsController *firstFetchedResultsController;
-@property (strong, nonatomic) NSFetchedResultsController *secondFetchedResultsController;
 @property (strong, nonatomic) IBOutlet UIScrollView *outerScrollView;
 
 @end

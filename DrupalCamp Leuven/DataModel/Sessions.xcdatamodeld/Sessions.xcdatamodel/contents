@@ -3,6 +3,7 @@
     <entity name="Session" representedClassName="Session" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="day" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="extra" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fav" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
         <attribute name="from" attributeType="Integer 32" syncable="YES"/>
         <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -12,7 +13,7 @@
         <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="to" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="track" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="speaker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Speaker" inverseName="session" inverseEntity="Speaker" syncable="YES"/>
+        <relationship name="speaker" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Speaker" inverseName="session" inverseEntity="Speaker" syncable="YES"/>
     </entity>
     <entity name="Speaker" representedClassName="Speaker" syncable="YES">
         <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,7 +26,7 @@
         <relationship name="session" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="speaker" inverseEntity="Session" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Session" positionX="160" positionY="192" width="128" height="223"/>
+        <element name="Session" positionX="160" positionY="192" width="128" height="238"/>
         <element name="Speaker" positionX="-56" positionY="194" width="128" height="163"/>
     </elements>
 </model>

@@ -14,7 +14,8 @@
 
 @property (nonatomic, strong) UILabel *sessionTitle;
 @property (nonatomic, strong) UILabel *speakerName;
-@property (nonatomic, strong) UILabel *timeSlot;
+@property (nonatomic, strong) UILabel *trackTitle;
 @property (nonatomic, strong) UIButton *favButton;
+@property (nonatomic, strong) UIImageView *trackImageView;
 
 @end

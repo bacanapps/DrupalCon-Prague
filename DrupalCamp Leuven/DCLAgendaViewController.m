@@ -61,7 +61,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 {
     [super viewDidLoad];
 
-    self.navigationItem.title = @"DRUPALCAMP";
+    self.navigationItem.title = @"SCHEDULE";
 
     PHFRefreshControl *refreshControl = [PHFRefreshControl new];
     [refreshControl setTintColor:[UIColor darkGrayColor]];
@@ -72,6 +72,9 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     
     [_day1 registerClass:[DCLSessionCell class] forCellReuseIdentifier:@"customCell"];
     [_day2 registerClass:[DCLSessionCell class] forCellReuseIdentifier:@"customCell"];
+    [_day3 registerClass:[DCLSessionCell class] forCellReuseIdentifier:@"customCell"];
+    [_day4 registerClass:[DCLSessionCell class] forCellReuseIdentifier:@"customCell"];
+    [_day5 registerClass:[DCLSessionCell class] forCellReuseIdentifier:@"customCell"];
 
     self.moc = [[NSManagedObjectContext alloc] init];
     [self.moc setPersistentStoreCoordinator:[[SessionsDataModel sharedDataModel] persistentStoreCoordinator]];
@@ -90,9 +93,16 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 {
     _firstFetchedResultsController = nil;
     _secondFetchedResultsController = nil;
+    _thirdFetchedResultsController = nil;
+    _fourthFetchedResultsController = nil;
+    _fifthFetchedResultsController = nil;
 
     [_day1 reloadData];
     [_day2 reloadData];
+    [_day3 reloadData];
+    [_day4 reloadData];
+    [_day5 reloadData];
+
 }
 
 - (void)refresh {
@@ -121,16 +131,20 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
                                        
                                        for (NSDictionary *dictionary in response) {
 
-                                            Speaker *speaker = nil;
+                                           
+                                           Speaker *speaker = nil;
 
-                                            for (NSDictionary *speakerDictionary in [dictionary objectForKey:@"speakers"]) {
-                                                NSInteger userId = [[speakerDictionary objectForKey:@"id"] intValue];
-                                                speaker = [Speaker speakerWithServerId:userId usingManagedObjectContext:self.moc];
+                                           NSMutableSet *speakers = [[NSMutableSet alloc] init];
+
+                                           for (NSDictionary *speakerDictionary in [dictionary objectForKey:@"speakers"]) {
+                                               NSInteger userId = [[speakerDictionary objectForKey:@"id"] intValue];
+                                               speaker = [Speaker speakerWithServerId:userId usingManagedObjectContext:self.moc];
                                                 if (speaker == nil) {
                                                     speaker = [Speaker insertInManagedObjectContext:self.moc];
                                                     [speaker setServerId:[NSNumber numberWithInteger:userId]];
                                                 }
                                                 [speaker updateAttributes:speakerDictionary];
+                                               [speakers addObject:speaker];
                                             }
 
                                             NSInteger serverId = [[dictionary objectForKey:@"id"] intValue];
@@ -140,7 +154,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
                                                 [session setServerId:[NSNumber numberWithInteger:serverId]];
                                             }
                                             
-                                            [session updateAttributes:dictionary withSpeaker:speaker];
+                                            [session updateAttributes:dictionary withSpeakers:speakers];
 
                                         }
 
@@ -170,14 +184,35 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         CGRect frame = CGRectMake(320, 0, _innerScrollView.frame.size.width, _innerScrollView.frame.size.height);
         [_innerScrollView scrollRectToVisible:frame animated:YES];
         _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day2.contentSize.height);
-        _innerScrollView.contentSize = CGSizeMake(640, _innerScrollView.frame.size.height);
+        _innerScrollView.contentSize = CGSizeMake(320 * 5, _innerScrollView.frame.size.height);
         _outerScrollView.contentSize = CGSizeMake(320, _day2.contentSize.height + 80);
     }
-    else {
+    else if (sender.tag == 2) {
         CGRect frame = CGRectMake(0, 0, _innerScrollView.frame.size.width, _innerScrollView.frame.size.height);
         [_innerScrollView scrollRectToVisible:frame animated:YES];
         _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day1.contentSize.height);
-        _innerScrollView.contentSize = CGSizeMake(640, _innerScrollView.frame.size.height);
+        _innerScrollView.contentSize = CGSizeMake(320 * 5, _innerScrollView.frame.size.height);
+        _outerScrollView.contentSize = CGSizeMake(320, _day1.contentSize.height + 80);
+    }
+    else if (sender.tag == 3) {
+        CGRect frame = CGRectMake(640, 0, _innerScrollView.frame.size.width, _innerScrollView.frame.size.height);
+        [_innerScrollView scrollRectToVisible:frame animated:YES];
+        _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day1.contentSize.height);
+        _innerScrollView.contentSize = CGSizeMake(320 * 5, _innerScrollView.frame.size.height);
+        _outerScrollView.contentSize = CGSizeMake(320, _day1.contentSize.height + 80);
+    }
+    else if (sender.tag == 4) {
+        CGRect frame = CGRectMake(960, 0, _innerScrollView.frame.size.width, _innerScrollView.frame.size.height);
+        [_innerScrollView scrollRectToVisible:frame animated:YES];
+        _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day1.contentSize.height);
+        _innerScrollView.contentSize = CGSizeMake(320 * 5, _innerScrollView.frame.size.height);
+        _outerScrollView.contentSize = CGSizeMake(320, _day1.contentSize.height + 80);
+    }
+    else if (sender.tag == 5) {
+        CGRect frame = CGRectMake(1280, 0, _innerScrollView.frame.size.width, _innerScrollView.frame.size.height);
+        [_innerScrollView scrollRectToVisible:frame animated:YES];
+        _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day1.contentSize.height);
+        _innerScrollView.contentSize = CGSizeMake(320 * 5, _innerScrollView.frame.size.height);
         _outerScrollView.contentSize = CGSizeMake(320, _day1.contentSize.height + 80);
     }
 }
@@ -187,20 +222,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 -(UIView *)addTableViewHeaderDay1 {
     
-    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20 , 65)];
+    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20 , 60)];
 
-    UIView *borderTop = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , 1)];
-    borderTop.backgroundColor = UIColorFromRGB(0xdcdcdc);
-
-    UIView *borderBottom = [[UIView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width , 1)];
-    borderBottom.backgroundColor = UIColorFromRGB(0xdcdcdc);
-
-    [containerView addSubview:borderTop];
-    [containerView addSubview:borderBottom];
-
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, containerView.frame.size.width, 50)];
-    headerLabel.font = [DCLLightFont sharedInstance];
-    headerLabel.text = @"14TH SEPTEMBER 2013";
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 3, containerView.frame.size.width, 60)];
+    headerLabel.font = [UIFont fontWithName:@"PT Sans Narrow" size:20.0];
+    headerLabel.text = @"23TH SEPTEMBER 2013";
     headerLabel.textColor = UIColorFromRGB(0x4b4745);
     headerLabel.textAlignment = NSTextAlignmentCenter;
     headerLabel.backgroundColor = [UIColor clearColor];
@@ -211,7 +237,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     [arrowButtonRight setBackgroundImage:arrowButtonRightImage forState:UIControlStateNormal];
     [arrowButtonRight setBackgroundImage:arrowButtonRightImage forState:UIControlStateHighlighted];
 
-    [arrowButtonRight setFrame:CGRectMake(containerView.frame.size.width - arrowButtonRightImage.size.width - 5, (50 - arrowButtonRightImage.size.height) / 2 + 1, arrowButtonRightImage.size.width, arrowButtonRightImage.size.height)];
+    [arrowButtonRight setFrame:CGRectMake(containerView.frame.size.width - arrowButtonRightImage.size.width - 5, (60 - arrowButtonRightImage.size.height) / 2 + 1, arrowButtonRightImage.size.width, arrowButtonRightImage.size.height)];
 
     [arrowButtonRight setTag:1];
     [arrowButtonRight addTarget:self
@@ -228,20 +254,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 -(UIView *)addTableViewHeaderDay2 {
 
-    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20 , 65)];
+    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20 , 60)];
 
-    UIView *borderTop = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , 1)];
-    borderTop.backgroundColor = UIColorFromRGB(0xdcdcdc);
-
-    UIView *borderBottom = [[UIView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width , 1)];
-    borderBottom.backgroundColor = UIColorFromRGB(0xdcdcdc);
-
-    [containerView addSubview:borderTop];
-    [containerView addSubview:borderBottom];
-
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, containerView.frame.size.width, 50)];
-    headerLabel.font = [DCLLightFont sharedInstance];
-    headerLabel.text = @"15TH SEPTEMBER 2013";
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 3, containerView.frame.size.width, 60)];
+    headerLabel.font = [UIFont fontWithName:@"PT Sans Narrow" size:20.0];
+    headerLabel.text = @"24TH SEPTEMBER 2013";
     headerLabel.textColor = UIColorFromRGB(0x4b4745);
     headerLabel.textAlignment = NSTextAlignmentCenter;
     headerLabel.backgroundColor = [UIColor clearColor];
@@ -252,17 +269,156 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     [arrowButtonLeft setBackgroundImage:arrowButtonLeftImage forState:UIControlStateNormal];
     [arrowButtonLeft setBackgroundImage:arrowButtonLeftImage forState:UIControlStateHighlighted];
 
-    [arrowButtonLeft setFrame:CGRectMake(0 + 5, (50 - arrowButtonLeftImage.size.height) / 2 + 1, arrowButtonLeftImage.size.width, arrowButtonLeftImage.size.height)];
+    [arrowButtonLeft setFrame:CGRectMake(0 + 5, (60 - arrowButtonLeftImage.size.height) / 2 + 1, arrowButtonLeftImage.size.width, arrowButtonLeftImage.size.height)];
     [arrowButtonLeft setTag:2];
     [arrowButtonLeft addTarget:self
+                        action:@selector(switchScrollView:)
+              forControlEvents:UIControlEventTouchDown];
+
+    [containerView addSubview:arrowButtonLeft];
+
+
+    UIImage *arrowButtonRightImage = [UIImage imageNamed:@"arrow-right.png"];
+    UIButton *arrowButtonRight = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    [arrowButtonRight setBackgroundImage:arrowButtonRightImage forState:UIControlStateNormal];
+    [arrowButtonRight setBackgroundImage:arrowButtonRightImage forState:UIControlStateHighlighted];
+
+    [arrowButtonRight setFrame:CGRectMake(containerView.frame.size.width - arrowButtonRightImage.size.width - 5, (60 - arrowButtonRightImage.size.height) / 2 + 1, arrowButtonRightImage.size.width, arrowButtonRightImage.size.height)];
+
+    [arrowButtonRight setTag:3];
+    [arrowButtonRight addTarget:self
                          action:@selector(switchScrollView:)
                forControlEvents:UIControlEventTouchDown];
+
+    [containerView addSubview:arrowButtonRight];
+
+
+
+    [containerView addSubview:headerLabel];
+    
+    return containerView;
+}
+
+-(UIView *)addTableViewHeaderDay3 {
+
+    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20 , 60)];
+
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 3, containerView.frame.size.width, 60)];
+    headerLabel.font = [UIFont fontWithName:@"PT Sans Narrow" size:20.0];
+    headerLabel.text = @"25TH SEPTEMBER 2013";
+    headerLabel.textColor = UIColorFromRGB(0x4b4745);
+    headerLabel.textAlignment = NSTextAlignmentCenter;
+    headerLabel.backgroundColor = [UIColor clearColor];
+
+    UIImage *arrowButtonLeftImage = [UIImage imageNamed:@"arrow-left.png"];
+    UIButton *arrowButtonLeft = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    [arrowButtonLeft setBackgroundImage:arrowButtonLeftImage forState:UIControlStateNormal];
+    [arrowButtonLeft setBackgroundImage:arrowButtonLeftImage forState:UIControlStateHighlighted];
+
+    [arrowButtonLeft setFrame:CGRectMake(0 + 5, (60 - arrowButtonLeftImage.size.height) / 2 + 1, arrowButtonLeftImage.size.width, arrowButtonLeftImage.size.height)];
+    [arrowButtonLeft setTag:1];
+    [arrowButtonLeft addTarget:self
+                        action:@selector(switchScrollView:)
+              forControlEvents:UIControlEventTouchDown];
+
+    [containerView addSubview:arrowButtonLeft];
+
+    UIImage *arrowButtonRightImage = [UIImage imageNamed:@"arrow-right.png"];
+    UIButton *arrowButtonRight = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    [arrowButtonRight setBackgroundImage:arrowButtonRightImage forState:UIControlStateNormal];
+    [arrowButtonRight setBackgroundImage:arrowButtonRightImage forState:UIControlStateHighlighted];
+
+    [arrowButtonRight setFrame:CGRectMake(containerView.frame.size.width - arrowButtonRightImage.size.width - 5, (60 - arrowButtonRightImage.size.height) / 2 + 1, arrowButtonRightImage.size.width, arrowButtonRightImage.size.height)];
+
+    [arrowButtonRight setTag:4];
+    [arrowButtonRight addTarget:self
+                         action:@selector(switchScrollView:)
+               forControlEvents:UIControlEventTouchDown];
+
+    [containerView addSubview:arrowButtonRight];
+
+    [containerView addSubview:headerLabel];
+    
+    return containerView;
+}
+
+
+-(UIView *)addTableViewHeaderDay4 {
+
+    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20 , 60)];
+
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 3, containerView.frame.size.width, 60)];
+    headerLabel.font = [UIFont fontWithName:@"PT Sans Narrow" size:20.0];
+    headerLabel.text = @"26TH SEPTEMBER 2013";
+    headerLabel.textColor = UIColorFromRGB(0x4b4745);
+    headerLabel.textAlignment = NSTextAlignmentCenter;
+    headerLabel.backgroundColor = [UIColor clearColor];
+
+    UIImage *arrowButtonLeftImage = [UIImage imageNamed:@"arrow-left.png"];
+    UIButton *arrowButtonLeft = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    [arrowButtonLeft setBackgroundImage:arrowButtonLeftImage forState:UIControlStateNormal];
+    [arrowButtonLeft setBackgroundImage:arrowButtonLeftImage forState:UIControlStateHighlighted];
+
+    [arrowButtonLeft setFrame:CGRectMake(0 + 5, (60 - arrowButtonLeftImage.size.height) / 2 + 1, arrowButtonLeftImage.size.width, arrowButtonLeftImage.size.height)];
+    [arrowButtonLeft setTag:3];
+    [arrowButtonLeft addTarget:self
+                        action:@selector(switchScrollView:)
+              forControlEvents:UIControlEventTouchDown];
+
+    [containerView addSubview:arrowButtonLeft];
+
+    UIImage *arrowButtonRightImage = [UIImage imageNamed:@"arrow-right.png"];
+    UIButton *arrowButtonRight = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    [arrowButtonRight setBackgroundImage:arrowButtonRightImage forState:UIControlStateNormal];
+    [arrowButtonRight setBackgroundImage:arrowButtonRightImage forState:UIControlStateHighlighted];
+
+    [arrowButtonRight setFrame:CGRectMake(containerView.frame.size.width - arrowButtonRightImage.size.width - 5, (60 - arrowButtonRightImage.size.height) / 2 + 1, arrowButtonRightImage.size.width, arrowButtonRightImage.size.height)];
+
+    [arrowButtonRight setTag:5];
+    [arrowButtonRight addTarget:self
+                         action:@selector(switchScrollView:)
+               forControlEvents:UIControlEventTouchDown];
+
+    [containerView addSubview:arrowButtonRight];
+
+    [containerView addSubview:headerLabel];
+    
+    return containerView;
+}
+
+-(UIView *)addTableViewHeaderDay5 {
+
+    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20 , 60)];
+
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 3, containerView.frame.size.width, 60)];
+    headerLabel.font = [UIFont fontWithName:@"PT Sans Narrow" size:20.0];
+    headerLabel.text = @"27TH SEPTEMBER 2013";
+    headerLabel.textColor = UIColorFromRGB(0x4b4745);
+    headerLabel.textAlignment = NSTextAlignmentCenter;
+    headerLabel.backgroundColor = [UIColor clearColor];
+
+    UIImage *arrowButtonLeftImage = [UIImage imageNamed:@"arrow-left.png"];
+    UIButton *arrowButtonLeft = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    [arrowButtonLeft setBackgroundImage:arrowButtonLeftImage forState:UIControlStateNormal];
+    [arrowButtonLeft setBackgroundImage:arrowButtonLeftImage forState:UIControlStateHighlighted];
+
+    [arrowButtonLeft setFrame:CGRectMake(0 + 5, (60 - arrowButtonLeftImage.size.height) / 2 + 1, arrowButtonLeftImage.size.width, arrowButtonLeftImage.size.height)];
+    [arrowButtonLeft setTag:4];
+    [arrowButtonLeft addTarget:self
+                        action:@selector(switchScrollView:)
+              forControlEvents:UIControlEventTouchDown];
 
     [containerView addSubview:arrowButtonLeft];
 
 
     [containerView addSubview:headerLabel];
-
+    
     return containerView;
 }
 
@@ -288,7 +444,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
             return [sectionInfo numberOfObjects];
         }
     }
-    else {
+    else if (tableView == _day2){
         if ([[self.secondFetchedResultsController sections] count] == 0) {
             return 0;
         }
@@ -297,7 +453,35 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
             return [sectionInfo numberOfObjects];
         }
     }
+    else if (tableView == _day3){
+        if ([[self.thirdFetchedResultsController sections] count] == 0) {
+            return 0;
+        }
+        else {
+            id <NSFetchedResultsSectionInfo> sectionInfo = [self.thirdFetchedResultsController sections][section];
+            return [sectionInfo numberOfObjects];
+        }
+    }
+    else if (tableView == _day4){
+        if ([[self.fourthFetchedResultsController sections] count] == 0) {
+            return 0;
+        }
+        else {
+            id <NSFetchedResultsSectionInfo> sectionInfo = [self.fourthFetchedResultsController sections][section];
+            return [sectionInfo numberOfObjects];
+        }
+    }
+    else if (tableView == _day5){
+        if ([[self.fifthFetchedResultsController sections] count] == 0) {
+            return 0;
+        }
+        else {
+            id <NSFetchedResultsSectionInfo> sectionInfo = [self.fifthFetchedResultsController sections][section];
+            return [sectionInfo numberOfObjects];
+        }
+    }
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -309,20 +493,67 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     if(tableView == _day1) {
         session = [self.firstFetchedResultsController objectAtIndexPath:indexPath];
     }
-    else {
+    else if(tableView == _day2) {
         session = [self.secondFetchedResultsController objectAtIndexPath:indexPath];
     }
+    else if(tableView == _day3) {
+        session = [self.thirdFetchedResultsController objectAtIndexPath:indexPath];
+    }
+    else if(tableView == _day4) {
+        session = [self.fourthFetchedResultsController objectAtIndexPath:indexPath];
+    }
+    else if(tableView == _day5) {
+        session = [self.fifthFetchedResultsController objectAtIndexPath:indexPath];
+    }
+    
     if ([session.special integerValue] == 0) {
         static NSString *CellIdentifier = @"customCell";
         DCLSessionCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
         cell.sessionTitle.text = session.title;
-        
-        cell.speakerName.text = [NSString stringWithFormat:@"%@ %@ (%@)", session.speaker.firstName, session.speaker.lastName, session.speaker.username];
-        cell.timeSlot.text = [NSString stringWithFormat:@"%@ - %@",
-                              [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:[session.from intValue]]],
-                              [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:[session.to intValue]]]];
 
+        NSMutableArray *speakers = [[NSMutableArray alloc] init];
+
+        for (Speaker *speaker in session.speaker) {
+            [speakers addObject:speaker.username];
+        }
+
+        if ([speakers count] > 0) {
+            cell.speakerName.text = [speakers componentsJoinedByString:@", "];
+        }
+        else {
+            cell.speakerName.text = session.extra;
+        }
+        
+        if ([session.track isEqualToString:@"Business + Strategy"]) {
+            [cell.trackImageView setImage:[UIImage imageNamed:@"business.png"]];
+        }
+        else if ([session.track isEqualToString:@"DevOps"]) {
+            [cell.trackImageView setImage:[UIImage imageNamed:@"devops.png"]];
+        }
+        else if ([session.track isEqualToString:@"Site Building"]) {
+            [cell.trackImageView setImage:[UIImage imageNamed:@"sitebuilding.png"]];
+        }
+        else if ([session.track isEqualToString:@"Labs"]) {
+            [cell.trackImageView setImage:[UIImage imageNamed:@"labs.png"]];
+        }
+        else if ([session.track isEqualToString:@"Coding + Development"]) {
+            [cell.trackImageView setImage:[UIImage imageNamed:@"coding.png"]];
+        }
+        else if ([session.track isEqualToString:@"Frontend"]) {
+            [cell.trackImageView setImage:[UIImage imageNamed:@"html5.png"]];
+        }
+        else if ([session.track isEqualToString:@"Core Conversations"]) {
+            [cell.trackImageView setImage:[UIImage imageNamed:@"core.png"]];
+        }
+        else if ([session.track isEqualToString:@"Business Showcase"]) {
+            [cell.trackImageView setImage:[UIImage imageNamed:@"showcase.png"]];
+        }
+
+        if (![session.track isEqualToString:@""]) {
+            cell.trackTitle.text = session.track;
+        }
+        
         [cell.favButton addTarget:self
                            action:@selector(addEventToFavorites:)
             forControlEvents:UIControlEventTouchDown];
@@ -340,13 +571,13 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         cell.backgroundColor = [UIColor clearColor];
         UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 46)];
-        containerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cell-blue.png"]];
+        containerView.backgroundColor = UIColorFromRGB(0x5c463a);
         [cell.contentView addSubview:containerView];
 
         UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(10, 12, 280, 20)];
         titleView.font = [DCLRegularFont sharedInstance];
         titleView.textColor = [UIColor whiteColor];
-        titleView.text = [NSString stringWithFormat:@"%@ - %@", [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:[session.from intValue]]], session.title];
+        titleView.text = [NSString stringWithFormat:@"%@", session.title];
         titleView.backgroundColor = [UIColor clearColor];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell.contentView addSubview:titleView];
@@ -362,22 +593,46 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     int page = _innerScrollView.contentOffset.x / _innerScrollView.frame.size.width;
     if (page == 0) {
         _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day1.contentSize.height);
-        _innerScrollView.contentSize = CGSizeMake(640, _innerScrollView.frame.size.height);
-        _outerScrollView.contentSize = CGSizeMake(320, _day1.contentSize.height + 80);
+        _innerScrollView.contentSize = CGSizeMake(320 * 5, _innerScrollView.frame.size.height);
+        _outerScrollView.contentSize = CGSizeMake(320, _day1.contentSize.height + 10);
     }
-    else {
+    else if (page == 1) {
         _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day2.contentSize.height);
-        _innerScrollView.contentSize = CGSizeMake(640, _innerScrollView.frame.size.height);
-        _outerScrollView.contentSize = CGSizeMake(320, _day2.contentSize.height + 80);
+        _innerScrollView.contentSize = CGSizeMake(320 * 5, _innerScrollView.frame.size.height);
+        _outerScrollView.contentSize = CGSizeMake(320, _day2.contentSize.height + 10);
     }
-    
+    else if (page == 2) {
+        _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day3.contentSize.height);
+        _innerScrollView.contentSize = CGSizeMake(320 * 5, _innerScrollView.frame.size.height);
+        _outerScrollView.contentSize = CGSizeMake(320, _day3.contentSize.height + 10);
+    }
+    else if (page == 3) {
+        _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day4.contentSize.height);
+        _innerScrollView.contentSize = CGSizeMake(320 * 5, _innerScrollView.frame.size.height);
+        _outerScrollView.contentSize = CGSizeMake(320, _day4.contentSize.height + 10);
+    }
+    else if (page == 4) {
+        _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day5.contentSize.height);
+        _innerScrollView.contentSize = CGSizeMake(320 * 5, _innerScrollView.frame.size.height);
+        _outerScrollView.contentSize = CGSizeMake(320, _day5.contentSize.height + 10);
+    }
+
 
     Session *session;
     if(tableView == _day1) {
         session = [self.firstFetchedResultsController objectAtIndexPath:indexPath];
     }
-    else {
+    else if(tableView == _day2) {
         session = [self.secondFetchedResultsController objectAtIndexPath:indexPath];
+    }
+    else if(tableView == _day3) {
+        session = [self.thirdFetchedResultsController objectAtIndexPath:indexPath];
+    }
+    else if(tableView == _day4) {
+        session = [self.fourthFetchedResultsController objectAtIndexPath:indexPath];
+    }
+    else if(tableView == _day5) {
+        session = [self.fifthFetchedResultsController objectAtIndexPath:indexPath];
     }
     
     if ([session.special integerValue] == 0) {
@@ -393,13 +648,25 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         int page = _innerScrollView.contentOffset.x / _innerScrollView.frame.size.width;
         if (page == 0) {
             _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day1.contentSize.height);
-            _outerScrollView.contentSize = CGSizeMake(320, _day1.contentSize.height + 80);
+            _outerScrollView.contentSize = CGSizeMake(320, _day1.contentSize.height + 10);
         }
-        else {
+        else if (page == 1) {
             _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day2.contentSize.height);
-            _outerScrollView.contentSize = CGSizeMake(320, _day2.contentSize.height + 80);
+            _outerScrollView.contentSize = CGSizeMake(320, _day2.contentSize.height + 10);
         }
-        _innerScrollView.contentSize = CGSizeMake(640, _innerScrollView.frame.size.height);
+        else if (page == 2) {
+            _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day3.contentSize.height);
+            _outerScrollView.contentSize = CGSizeMake(320, _day3.contentSize.height + 10);
+        }
+        else if (page == 3) {
+            _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day4.contentSize.height);
+            _outerScrollView.contentSize = CGSizeMake(320, _day4.contentSize.height + 10);
+        }
+        else if (page == 4) {
+            _innerScrollView.frame = CGRectMake(_innerScrollView.frame.origin.x, _innerScrollView.frame.origin.y, _innerScrollView.frame.size.width, _day5.contentSize.height);
+            _outerScrollView.contentSize = CGSizeMake(320, _day5.contentSize.height + 10);
+        }
+        _innerScrollView.contentSize = CGSizeMake(320 * 5, _innerScrollView.frame.size.height);
     }
 }
 
@@ -422,11 +689,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
     [fetchRequest setReturnsObjectsAsFaults:NO];
 
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:[[NSSortDescriptor alloc] initWithKey:@"from" ascending:YES], [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES], nil];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:[[NSSortDescriptor alloc] initWithKey:@"from" ascending:YES], [[NSSortDescriptor alloc] initWithKey:@"to" ascending:YES], [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES], nil];
 
     [fetchRequest setSortDescriptors:sortDescriptors];
 
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day == 14"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day == 23"];
     fetchRequest.predicate = predicate;
 
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.moc sectionNameKeyPath:@"day" cacheName:nil];
@@ -460,7 +727,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
     [fetchRequest setSortDescriptors:sortDescriptors];
 
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day == 15"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day == 24"];
     fetchRequest.predicate = predicate;
 
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.moc sectionNameKeyPath:@"day" cacheName:nil];
@@ -475,16 +742,127 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     return _secondFetchedResultsController;
 }
 
+- (NSFetchedResultsController *)thirdFetchedResultsController
+{
+
+    if (_thirdFetchedResultsController != nil) {
+        return _thirdFetchedResultsController;
+    }
+
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+
+    NSEntityDescription *entity = [Session entityInManagedObjectContext:self.moc];
+
+    [fetchRequest setEntity:entity];
+
+    [fetchRequest setReturnsObjectsAsFaults:NO];
+
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:[[NSSortDescriptor alloc] initWithKey:@"from" ascending:YES], [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES], nil];
+
+    [fetchRequest setSortDescriptors:sortDescriptors];
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day == 25"];
+    fetchRequest.predicate = predicate;
+
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.moc sectionNameKeyPath:@"day" cacheName:nil];
+    aFetchedResultsController.delegate = self;
+    self.thirdFetchedResultsController = aFetchedResultsController;
+
+	NSError *error = nil;
+	if (![self.thirdFetchedResultsController performFetch:&error]) {
+        abort();
+	}
+
+    return _thirdFetchedResultsController;
+}
+
+- (NSFetchedResultsController *)fourthFetchedResultsController
+{
+
+    if (_fourthFetchedResultsController != nil) {
+        return _fourthFetchedResultsController;
+    }
+
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+
+    NSEntityDescription *entity = [Session entityInManagedObjectContext:self.moc];
+
+    [fetchRequest setEntity:entity];
+
+    [fetchRequest setReturnsObjectsAsFaults:NO];
+
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:[[NSSortDescriptor alloc] initWithKey:@"from" ascending:YES], [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES], nil];
+
+    [fetchRequest setSortDescriptors:sortDescriptors];
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day == 26"];
+    fetchRequest.predicate = predicate;
+
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.moc sectionNameKeyPath:@"day" cacheName:nil];
+    aFetchedResultsController.delegate = self;
+    self.fourthFetchedResultsController = aFetchedResultsController;
+
+	NSError *error = nil;
+	if (![self.fourthFetchedResultsController performFetch:&error]) {
+        abort();
+	}
+
+    return _fourthFetchedResultsController;
+}
+
+- (NSFetchedResultsController *)fifthFetchedResultsController
+{
+
+    if (_fifthFetchedResultsController != nil) {
+        return _fifthFetchedResultsController;
+    }
+
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+
+    NSEntityDescription *entity = [Session entityInManagedObjectContext:self.moc];
+
+    [fetchRequest setEntity:entity];
+
+    [fetchRequest setReturnsObjectsAsFaults:NO];
+
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:[[NSSortDescriptor alloc] initWithKey:@"from" ascending:YES], [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES], nil];
+
+    [fetchRequest setSortDescriptors:sortDescriptors];
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day == 27"];
+    fetchRequest.predicate = predicate;
+
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.moc sectionNameKeyPath:@"day" cacheName:nil];
+    aFetchedResultsController.delegate = self;
+    self.fifthFetchedResultsController = aFetchedResultsController;
+
+	NSError *error = nil;
+	if (![self.fifthFetchedResultsController performFetch:&error]) {
+        abort();
+	}
+
+    return _fifthFetchedResultsController;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Session *session;
     if(tableView == _day1) {
         session = [self.firstFetchedResultsController objectAtIndexPath:indexPath];
     }
-    else {
+    else if(tableView == _day2) {
         session = [self.secondFetchedResultsController objectAtIndexPath:indexPath];
     }
-    
+    else if(tableView == _day3) {
+        session = [self.thirdFetchedResultsController objectAtIndexPath:indexPath];
+    }
+    else if(tableView == _day4) {
+        session = [self.fourthFetchedResultsController objectAtIndexPath:indexPath];
+    }
+    else if(tableView == _day5) {
+        session = [self.fifthFetchedResultsController objectAtIndexPath:indexPath];
+    }
+
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     DCLSessionViewController *detail = [[DCLSessionViewController alloc] initWithNibName:nil bundle:NULL];
     detail.title = session.title;
@@ -521,10 +899,17 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
         _day1.tableHeaderView = [self addTableViewHeaderDay1];
         _day2.tableHeaderView = [self addTableViewHeaderDay2];
+        _day3.tableHeaderView = [self addTableViewHeaderDay3];
+        _day4.tableHeaderView = [self addTableViewHeaderDay4];
+        _day5.tableHeaderView = [self addTableViewHeaderDay5];
 
         [_day1 reloadData];
         [_day2 reloadData];
+        [_day3 reloadData];
+        [_day4 reloadData];
+        [_day5 reloadData];
 
+        
     }
 }
 
@@ -541,6 +926,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         for (NSDictionary *dictionary in sessions) {
 
             Speaker *speaker = nil;
+            NSMutableSet *speakers = [[NSMutableSet alloc] init];
 
             for (NSDictionary *speakerDictionary in [dictionary objectForKey:@"speakers"]) {
                 NSInteger userId = [[speakerDictionary objectForKey:@"id"] intValue];
@@ -550,6 +936,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
                     [speaker setServerId:[NSNumber numberWithInteger:userId]];
                 }
                 [speaker updateAttributes:speakerDictionary];
+                [speakers addObject:speaker];
             }
             
             NSInteger serverId = [[dictionary objectForKey:@"id"] intValue];
@@ -559,7 +946,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
                 [session setServerId:[NSNumber numberWithInteger:serverId]];
             }
 
-            [session updateAttributes:dictionary withSpeaker:speaker];
+            [session updateAttributes:dictionary withSpeakers:speakers];
 
             currentRecord++;
 
@@ -576,11 +963,21 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
                 [_hud hide:YES afterDelay:2.0];
                 _day1.tableHeaderView = [self addTableViewHeaderDay1];
                 _day2.tableHeaderView = [self addTableViewHeaderDay2];
+                _day3.tableHeaderView = [self addTableViewHeaderDay3];
+                _day4.tableHeaderView = [self addTableViewHeaderDay4];
+                _day5.tableHeaderView = [self addTableViewHeaderDay5];
+
                 [self.firstFetchedResultsController performFetch:nil];
                 [self.secondFetchedResultsController performFetch:nil];
+                [self.thirdFetchedResultsController performFetch:nil];
+                [self.fourthFetchedResultsController performFetch:nil];
+                [self.fifthFetchedResultsController performFetch:nil];
 
                 [_day1 reloadData];
                 [_day2 reloadData];
+                [_day3 reloadData];
+                [_day4 reloadData];
+                [_day5 reloadData];
 
             });
         } else {
@@ -633,6 +1030,66 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         sender.selected = status;
         [session toggleFavorite:status];
         [[self.secondFetchedResultsController objectAtIndexPath:indexPath] toggleFavorite:status];
+        [self.moc save:nil];
+
+    }
+
+    buttonPosition = [sender convertPoint:CGPointZero toView:_day3];
+    indexPath = [_day3 indexPathForRowAtPoint:buttonPosition];
+    if (indexPath != nil)
+    {
+        NSInteger serverId = [[[self.thirdFetchedResultsController objectAtIndexPath:indexPath] serverId] intValue];
+        Session *session = [Session eventWithServerId:serverId usingManagedObjectContext:self.moc];
+        bool status;
+        if ([session.fav isEqualToNumber:[NSNumber numberWithInt:1]]) {
+            status = NO;
+        }
+        else {
+            status = YES;
+        }
+        sender.selected = status;
+        [session toggleFavorite:status];
+        [[self.thirdFetchedResultsController objectAtIndexPath:indexPath] toggleFavorite:status];
+        [self.moc save:nil];
+
+    }
+
+    buttonPosition = [sender convertPoint:CGPointZero toView:_day4];
+    indexPath = [_day4 indexPathForRowAtPoint:buttonPosition];
+    if (indexPath != nil)
+    {
+        NSInteger serverId = [[[self.fourthFetchedResultsController objectAtIndexPath:indexPath] serverId] intValue];
+        Session *session = [Session eventWithServerId:serverId usingManagedObjectContext:self.moc];
+        bool status;
+        if ([session.fav isEqualToNumber:[NSNumber numberWithInt:1]]) {
+            status = NO;
+        }
+        else {
+            status = YES;
+        }
+        sender.selected = status;
+        [session toggleFavorite:status];
+        [[self.fourthFetchedResultsController objectAtIndexPath:indexPath] toggleFavorite:status];
+        [self.moc save:nil];
+
+    }
+
+    buttonPosition = [sender convertPoint:CGPointZero toView:_day5];
+    indexPath = [_day5 indexPathForRowAtPoint:buttonPosition];
+    if (indexPath != nil)
+    {
+        NSInteger serverId = [[[self.fifthFetchedResultsController objectAtIndexPath:indexPath] serverId] intValue];
+        Session *session = [Session eventWithServerId:serverId usingManagedObjectContext:self.moc];
+        bool status;
+        if ([session.fav isEqualToNumber:[NSNumber numberWithInt:1]]) {
+            status = NO;
+        }
+        else {
+            status = YES;
+        }
+        sender.selected = status;
+        [session toggleFavorite:status];
+        [[self.fifthFetchedResultsController objectAtIndexPath:indexPath] toggleFavorite:status];
         [self.moc save:nil];
 
     }

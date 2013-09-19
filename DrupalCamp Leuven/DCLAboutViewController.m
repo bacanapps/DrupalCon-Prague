@@ -45,58 +45,38 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     [super viewDidLoad];
 
     self.navigationItem.title = @"ABOUT";
-    _infoLabel.font = [DCLBoldFont sharedInstance];
+    _infoLabel.font = [DCLRegularFont sharedInstance];
     _infoLabel.textColor = UIColorFromRGB(0x4b4745);
+
+    _infoLabel.frame = CGRectMake(20, 20, 280, [self getHeightForString:_infoLabel.text forWidth:280 withFont:[DCLRegularFont sharedInstance]]);
 
     _proudly.font = [DCLBoldFont sharedInstance];
     _proudly.textColor = UIColorFromRGB(0x4b4745);
 
-    _bronCode.font = [DCLBoldFont sharedInstance];
-    _bronCode.textColor = UIColorFromRGB(0x4b4745);
+    _proudly.frame = CGRectMake(20, _infoLabel.frame.size.height + _infoLabel.frame.origin.y + 20, 280, [self getHeightForString:_proudly.text forWidth:280 withFont:[DCLBoldFont sharedInstance]]);
 
     _namesLabel.font = [DCLRegularFont sharedInstance];
     _namesLabel.textColor = UIColorFromRGB(0x4b4745);
-
-    _seperator.backgroundColor = UIColorFromRGB(0xdcdcdc);
-    _seperator2.backgroundColor = UIColorFromRGB(0xdcdcdc);
-
 
     _namesLabel = [[IFTweetLabel alloc] initWithFrame:CGRectMake(20, 135, 280, 60)];
     _namesLabel.backgroundColor = [UIColor clearColor];
 
-    _namesLabel.text = @"@TimLeytens - iOS & Drupal developer\n@Swentel - Android & Drupal developer\n@LeenVS - Graphic designer";
+    _namesLabel.text = @"@TimLeytens\n@Swentel\n@LeenVS";
     _namesLabel.font = [DCLRegularFont sharedInstance];
-    _namesLabel.textColor = UIColorFromRGB(0x4b4745);
+    _namesLabel.textColor = UIColorFromRGB(0x3a92c2);
     _namesLabel.numberOfLines = 0;
 
     _namesLabel.highlightColor = UIColorFromRGB(0x3a92c2);
-    _namesLabel.normalColor = UIColorFromRGB(0x3a92c2);
+    _namesLabel.normalColor = [UIColor clearColor];
     _namesLabel.highlightImage = [UIImage imageNamed:@"transparant.png"];
     _namesLabel.normalImage = [UIImage imageNamed:@"transparant.png"];
-    
+
+    _namesLabel.frame = CGRectMake(20, _proudly.frame.size.height + _proudly.frame.origin.y + 10, 280, [self getHeightForString:_namesLabel.text forWidth:280 withFont:[DCLRegularFont sharedInstance]]);
 
     [_namesLabel setLinksEnabled:YES];
    
     
     [self.view addSubview:_namesLabel];
-
-    _codeLabel = [[IFTweetLabel alloc] initWithFrame:CGRectMake(20, 245, 280, 80)];
-    _codeLabel.backgroundColor = [UIColor clearColor];
-
-    _codeLabel.text = @"iOS: \nhttp://github.com/TimLeytens/drupalcamp \nAndroid: http://github.com/swentel/drupalcamp";
-    _codeLabel.font = [DCLRegularFont sharedInstance];
-    _codeLabel.textColor = UIColorFromRGB(0x4b4745);
-    _codeLabel.numberOfLines = 0;
-
-    _codeLabel.highlightColor = UIColorFromRGB(0x3a92c2);
-    _codeLabel.normalColor = UIColorFromRGB(0x3a92c2);
-    _codeLabel.highlightImage = [UIImage imageNamed:@"transparant.png"];
-    _codeLabel.normalImage = [UIImage imageNamed:@"transparant.png"];
-
-
-    [_codeLabel setLinksEnabled:YES];
-
-    [self.view addSubview:_codeLabel];
 
     
 }
@@ -125,6 +105,13 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:notification.object]];
 
     }
+}
+
+-(CGFloat)getHeightForString:(NSString *)string forWidth:(float)width withFont:(UIFont *)font {
+    NSString *text = string;
+    CGSize constraint = CGSizeMake(width, 20000.0f);
+    CGSize size = [text sizeWithFont:font constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    return size.height;
 }
 
 @end

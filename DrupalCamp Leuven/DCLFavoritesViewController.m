@@ -42,12 +42,12 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    self.view.backgroundColor = UIColorFromRGB(0xf0f0f2);
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile.png"]];
 
     self.navigationItem.rightBarButtonItem = [self showCloseFavoritesButton];
 
     self.navigationItem.title = @"FAVORITES";
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width - 20, self.view.frame.size.height - 20)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width - 20, self.view.frame.size.height - 20 - 44)];
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.delegate = self;
@@ -125,24 +125,22 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
 
-    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20 , 60)];
-    containerView.backgroundColor = [UIColor clearColor];
+    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20 , 50)];
+    containerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile.png"]];
 
     UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , 9)];
-    maskView.backgroundColor = UIColorFromRGB(0xf0f0f2);
+    maskView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile.png"]];;
 
     UIView *borderTop = [[UIView alloc] initWithFrame:CGRectMake(0, 9, self.view.frame.size.width , 1)];
-    borderTop.backgroundColor = UIColorFromRGB(0xdcdcdc);
+    borderTop.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile.png"]];
 
-    UIView *borderBottom = [[UIView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width , 1)];
-    borderBottom.backgroundColor = UIColorFromRGB(0xdcdcdc);
+   
 
     [containerView addSubview:maskView];
     [containerView addSubview:borderTop];
-    [containerView addSubview:borderBottom];
 
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, containerView.frame.size.width, 50)];
-    headerLabel.font = [DCLLightFont sharedInstance];
+    headerLabel.font = [UIFont fontWithName:@"PT Sans Narrow" size:20.0];
     headerLabel.text = [NSString stringWithFormat:@"%@TH SEPTEMBER 2013", [sectionInfo name]];
     headerLabel.textColor = UIColorFromRGB(0x4b4745);
     headerLabel.textAlignment = NSTextAlignmentCenter;
@@ -158,7 +156,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         return 0;
     }
     else {
-        return 71.0;
+        return 65.0;
     }
 }
 
@@ -171,6 +169,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     detail.title = session.title;
     detail.session = session;
     detail.moc = self.moc;
+    detail.calledInModalViewController = YES;
     [self.navigationController pushViewController:detail animated:YES];
 
 }
@@ -238,10 +237,42 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
     cell.sessionTitle.text = session.title;
 
-    cell.speakerName.text = [NSString stringWithFormat:@"%@ %@ (%@)", session.speaker.firstName, session.speaker.lastName, session.speaker.username];
-    cell.timeSlot.text = [NSString stringWithFormat:@"%@ - %@",
-                          [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:[session.from intValue]]],
-                          [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:[session.to intValue]]]];
+    NSMutableArray *speakers = [[NSMutableArray alloc] init];
+
+    for (Speaker *speaker in session.speaker) {
+        [speakers addObject:speaker.username];
+    }
+
+    cell.speakerName.text = [speakers componentsJoinedByString:@", "];
+    
+    if ([session.track isEqualToString:@"Business + Strategy"]) {
+        [cell.trackImageView setImage:[UIImage imageNamed:@"business.png"]];
+    }
+    else if ([session.track isEqualToString:@"DevOps"]) {
+        [cell.trackImageView setImage:[UIImage imageNamed:@"devops.png"]];
+    }
+    else if ([session.track isEqualToString:@"Site Building"]) {
+        [cell.trackImageView setImage:[UIImage imageNamed:@"sitebuilding.png"]];
+    }
+    else if ([session.track isEqualToString:@"Labs"]) {
+        [cell.trackImageView setImage:[UIImage imageNamed:@"labs.png"]];
+    }
+    else if ([session.track isEqualToString:@"Coding + Development"]) {
+        [cell.trackImageView setImage:[UIImage imageNamed:@"coding.png"]];
+    }
+    else if ([session.track isEqualToString:@"Frontend"]) {
+        [cell.trackImageView setImage:[UIImage imageNamed:@"html5.png"]];
+    }
+    else if ([session.track isEqualToString:@"Core Conversations"]) {
+        [cell.trackImageView setImage:[UIImage imageNamed:@"core.png"]];
+    }
+    else if ([session.track isEqualToString:@"Business Showcase"]) {
+        [cell.trackImageView setImage:[UIImage imageNamed:@"showcase.png"]];
+    }
+
+    if (![session.track isEqualToString:@""]) {
+        cell.trackTitle.text = session.track;
+    }
 
     [cell.favButton addTarget:self
                        action:@selector(addEventToFavorites:)

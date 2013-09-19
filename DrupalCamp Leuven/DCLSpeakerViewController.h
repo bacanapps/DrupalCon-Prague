@@ -15,4 +15,6 @@
 
 @property (nonatomic) BOOL calledFromSessionViewController;
 
+@property (nonatomic) BOOL calledInModalViewController;
+
 @end

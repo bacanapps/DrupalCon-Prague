@@ -74,13 +74,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(20, 130, self.view.frame.size.width - 40, 240)];
     backView.backgroundColor = UIColorFromRGB(0xffffff);
 
-    [backView setClipsToBounds:NO];
-    [backView.layer setCornerRadius:1];
-    [backView.layer setShadowOffset:CGSizeMake(0, 0)];
-    [backView.layer setShadowColor:[[UIColor lightGrayColor] CGColor]];
-    [backView.layer setShadowRadius:1];
-    [backView.layer setShadowOpacity:0.5];
-
     _scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 
     
@@ -97,16 +90,16 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     [mapView setScrollEnabled:YES];
 
     MKCoordinateRegion region = { {0.0, 0.0 }, { 0.0, 0.0 } };
-    region.center.latitude = 50.880679;
-    region.center.longitude = 4.674532;
+    region.center.latitude = 50.062152;
+    region.center.longitude = 14.428607;
     region.span.longitudeDelta = 0.02f;
     region.span.latitudeDelta = 0.02f;
     [mapView setRegion:region animated:NO];
 
     
     DCLAnnotation *annotation = [[DCLAnnotation alloc] init];
-    annotation.lat = 50.880679;
-    annotation.lon = 4.674532;
+    annotation.lat = 50.062152;
+    annotation.lon = 14.428607;
     [mapView addAnnotation:annotation];
 
     [mapView setDelegate:self];
@@ -119,7 +112,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
           forControlEvents:UIControlEventTouchDown];
     [routeButton setTitle:@"Show route" forState:UIControlStateNormal];
     routeButton.frame = CGRectMake(20, backView.frame.origin.y + backView.frame.size.height + 15, self.view.frame.size.width - 40, 55.0);
-    routeButton.backgroundColor = UIColorFromRGB(0xb93939);
+    routeButton.backgroundColor = UIColorFromRGB(0x00878a);
+
 
     [_scrollView addSubview:routeButton];
 
@@ -133,7 +127,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     Class mapItemClass = [MKMapItem class];
     if (mapItemClass && [mapItemClass respondsToSelector:@selector(openMapsWithItems:launchOptions:)])
     {
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(50.880679, 4.674532);
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(50.062152, 14.428607);
         MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate
                                                        addressDictionary:nil];
         MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];

@@ -29,7 +29,7 @@
     return [results objectAtIndex:0];
 }
 
-- (void)updateAttributes:(NSDictionary *)attributes withSpeaker:(Speaker *)speaker {
+- (void)updateAttributes:(NSDictionary *)attributes withSpeakers:(NSSet *)speakers {
  
     self.title = [attributes objectForKeyOrNil:@"title"];
     self.body = [attributes objectForKeyOrNil:@"description"];
@@ -40,8 +40,9 @@
     self.track = [[attributes objectForKeyOrNil:@"track"] componentsJoinedByString:@";"];
     self.day = [attributes objectForKeyOrNil:@"day"];
     self.room = [attributes objectForKeyOrNil:@"room"];
+    self.extra = [attributes objectForKeyOrNil:@"extra"];
 
-    self.speaker = speaker;
+    self.speaker = speakers;
 
 }
 

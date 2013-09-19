@@ -21,8 +21,20 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *day2;
 
+@property (strong, nonatomic) IBOutlet UITableView *day3;
+
+@property (strong, nonatomic) IBOutlet UITableView *day4;
+
+@property (strong, nonatomic) IBOutlet UITableView *day5;
+
 @property (strong, nonatomic) NSFetchedResultsController *firstFetchedResultsController;
 
 @property (strong, nonatomic) NSFetchedResultsController *secondFetchedResultsController;
+
+@property (strong, nonatomic) NSFetchedResultsController *thirdFetchedResultsController;
+
+@property (strong, nonatomic) NSFetchedResultsController *fourthFetchedResultsController;
+
+@property (strong, nonatomic) NSFetchedResultsController *fifthFetchedResultsController;
 
 @end

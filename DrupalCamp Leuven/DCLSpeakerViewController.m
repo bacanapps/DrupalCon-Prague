@@ -39,8 +39,16 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 {
     [super viewDidLoad];
 
-    UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    UIScrollView *scroll = nil;
 
+    if (self.calledInModalViewController) {
+        scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 44)];
+        self.navigationItem.rightBarButtonItem = [self showCloseFavoritesButton];
+    }
+    else {
+        scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 49 - 44)];
+    }
+    
     UIImage *buttonImage = [UIImage imageNamed:@"back.png"];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:buttonImage forState:UIControlStateNormal];
@@ -50,15 +58,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     self.navigationItem.leftBarButtonItem = customBarItem;
 
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width - 20, 240)];
-    backView.backgroundColor = UIColorFromRGB(0xffffff);
-
-    [backView setClipsToBounds:NO];
-    [backView.layer setCornerRadius:1];
-    [backView.layer setShadowOffset:CGSizeMake(0, 0)];
-    [backView.layer setShadowColor:[[UIColor lightGrayColor] CGColor]];
-    [backView.layer setShadowRadius:1];
-    [backView.layer setShadowOpacity:0.5];
-
+    backView.backgroundColor = [UIColor colorWithWhite:100 alpha:0.7];
     [scroll addSubview:backView];
 
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 123, 123)];
@@ -66,77 +66,48 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     [backView addSubview:imageView];
 
     UILabel *firstNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(155, 20, 150, 20)];
-    firstNameLabel.backgroundColor = [UIColor whiteColor];
+    firstNameLabel.backgroundColor = [UIColor clearColor];
     firstNameLabel.font = [DCLRegularFont sharedInstance];
     firstNameLabel.textColor = UIColorFromRGB(0x4b4745);
     firstNameLabel.text = @"First name:";
     [scroll addSubview:firstNameLabel];
 
     UILabel *firstNameText= [[UILabel alloc] initWithFrame:CGRectMake(155, 40, 150, 20)];
-    firstNameText.backgroundColor = [UIColor whiteColor];
+    firstNameText.backgroundColor = [UIColor clearColor];
     firstNameText.font = [DCLBoldFont sharedInstance];
     firstNameText.textColor = UIColorFromRGB(0x4b4745);
     firstNameText.text = _speaker.firstName;
     [scroll addSubview:firstNameText];
 
     UILabel *lastNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(155, 70, 150, 20)];
-    lastNameLabel.backgroundColor = [UIColor whiteColor];
+    lastNameLabel.backgroundColor = [UIColor clearColor];
     lastNameLabel.font = [DCLRegularFont sharedInstance];
     lastNameLabel.textColor = UIColorFromRGB(0x4b4745);
     lastNameLabel.text = @"Last name:";
     [scroll addSubview:lastNameLabel];
 
     UILabel *lastNameText= [[UILabel alloc] initWithFrame:CGRectMake(155, 90, 150, 20)];
-    lastNameText.backgroundColor = [UIColor whiteColor];
+    lastNameText.backgroundColor = [UIColor clearColor];
     lastNameText.font = [DCLBoldFont sharedInstance];
     lastNameText.textColor = UIColorFromRGB(0x4b4745);
     lastNameText.text = _speaker.lastName;
     [scroll addSubview:lastNameText];
 
-
-    UILabel *userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(155, 120, 150, 20)];
-    userNameLabel.backgroundColor = [UIColor whiteColor];
-    userNameLabel.font = [DCLRegularFont sharedInstance];
-    userNameLabel.textColor = UIColorFromRGB(0x4b4745);
-    userNameLabel.text = @"Username:";
-    [scroll addSubview:userNameLabel];
-
-    UILabel *userNameText= [[UILabel alloc] initWithFrame:CGRectMake(155, 140, 150, 20)];
-    userNameText.backgroundColor = [UIColor whiteColor];
-    userNameText.font = [DCLBoldFont sharedInstance];
-    userNameText.textColor = UIColorFromRGB(0x4b4745);
-    userNameText.text = _speaker.username;
-    [scroll addSubview:userNameText];
-
-    UILabel *organisationLabel = [[UILabel alloc] initWithFrame:CGRectMake(155, 170, 150, 20)];
-    organisationLabel.backgroundColor = [UIColor whiteColor];
+    UILabel *organisationLabel = [[UILabel alloc] initWithFrame:CGRectMake(155, 120, 150, 20)];
+    organisationLabel.backgroundColor = [UIColor clearColor];
     organisationLabel.font = [DCLRegularFont sharedInstance];
     organisationLabel.textColor = UIColorFromRGB(0x4b4745);
     organisationLabel.text = @"Organization:";
     [scroll addSubview:organisationLabel];
 
-    UILabel *organisationText= [[UILabel alloc] initWithFrame:CGRectMake(155, 190, 150, 20)];
-    organisationText.backgroundColor = [UIColor whiteColor];
+    UILabel *organisationText= [[UILabel alloc] initWithFrame:CGRectMake(155, 140, 150, 20)];
+    organisationText.backgroundColor = [UIColor clearColor];
     organisationText.font = [DCLBoldFont sharedInstance];
     organisationText.textColor = UIColorFromRGB(0x4b4745);
     organisationText.text = _speaker.company ? _speaker.company : @"-";
     [scroll addSubview:organisationText];
         
-    UILabel *twitterLabel = [[UILabel alloc] initWithFrame:CGRectMake(155, 220, 150, 20)];
-    twitterLabel.backgroundColor = [UIColor whiteColor];
-    twitterLabel.font = [DCLRegularFont sharedInstance];
-    twitterLabel.textColor = UIColorFromRGB(0x4b4745);
-    twitterLabel.text = @"Twitter:";
-    [scroll addSubview:twitterLabel];
-
-    UILabel *twitterText= [[UILabel alloc] initWithFrame:CGRectMake(155, 240, 150, 20)];
-    twitterText.backgroundColor = [UIColor whiteColor];
-    twitterText.font = [DCLBoldFont sharedInstance];
-    twitterText.textColor = UIColorFromRGB(0x4b4745);
-    twitterText.text = _speaker.twitter ? _speaker.twitter : @"-";
-    [scroll addSubview:twitterText];
-    
-    backView.frame = CGRectMake(backView.frame.origin.x, backView.frame.origin.y, backView.frame.size.width, twitterText.frame.origin.y + twitterText.frame.size.height + 10);
+    backView.frame = CGRectMake(backView.frame.origin.x, backView.frame.origin.y, backView.frame.size.width, organisationText.frame.origin.y + organisationText.frame.size.height + 10);
 
     [self.view addSubview:scroll];
 
@@ -151,10 +122,14 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
             sessionButton.frame = CGRectMake(10, offset, self.view.frame.size.width - 20, 55.0);
             sessionButton.backgroundColor = UIColorFromRGB(0x00878a);
             sessionButton.tag = [session.serverId integerValue];
+            sessionButton.lineBreakMode = NSLineBreakByTruncatingTail;
             offset += 65;
             [scroll addSubview:sessionButton];
         }
     }
+
+    scroll.contentSize = CGSizeMake(self.view.frame.size.width, offset + 95);
+
 }
 
 - (void)pushSession:(UIButton *)sender
@@ -169,6 +144,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     detail.session = session;
     detail.moc = moc;
     //detail.calledFromSpeakerViewController = YES;
+
+    if (self.calledInModalViewController) {
+        detail.calledInModalViewController = YES;
+    }
+    
     [self.navigationController pushViewController:detail animated:YES];
 }
 
@@ -177,6 +157,38 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)dismissModal:(id)button
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ModalViewControllerDismissed"
+                                                        object:nil
+                                                      userInfo:nil];
+
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (UIBarButtonItem *)showCloseFavoritesButton {
+    UIImage *favButtonImage = [UIImage imageNamed:@"close.png"];
+    UIImage *favButtonImageActive = [UIImage imageNamed:@"close.png"];
+    UIButton *favButton = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    [favButton setBackgroundImage:favButtonImage forState:UIControlStateNormal];
+    [favButton setBackgroundImage:favButtonImageActive forState:UIControlStateHighlighted];
+
+    [favButton setFrame:CGRectMake(0, 1, favButtonImage.size.width, favButtonImage.size.height)];
+
+    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, favButtonImage.size.width, favButtonImage.size.height)];
+
+    [favButton addTarget:self
+                  action:@selector(dismissModal:)
+        forControlEvents:UIControlEventTouchDown];
+
+    [containerView addSubview:favButton];
+
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:containerView];
+    return item;
+}
+
 
 - (void)back
 {

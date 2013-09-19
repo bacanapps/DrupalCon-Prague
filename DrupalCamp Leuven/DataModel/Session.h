@@ -10,7 +10,7 @@
 
 + (Session *)eventWithServerId:(NSInteger)serverId usingManagedObjectContext:(NSManagedObjectContext *)moc;
 
-- (void)updateAttributes:(NSDictionary *)attributes withSpeaker:(Speaker *)speaker;
+- (void)updateAttributes:(NSDictionary *)attributes withSpeakers:(NSSet *)speakers;
 
 + (int)countWithManagedObjectContext:(NSManagedObjectContext *)context;
 

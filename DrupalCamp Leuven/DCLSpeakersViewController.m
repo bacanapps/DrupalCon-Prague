@@ -58,110 +58,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 	self.navigationItem.title = @"SPEAKERS";
 
     [_day1 registerClass:[DCLSpeakerCell class] forCellReuseIdentifier:@"customCell"];
-    [_day2 registerClass:[DCLSpeakerCell class] forCellReuseIdentifier:@"customCell"];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
+    _day1.tableHeaderView = headerView;
 
 }
-
--(UIView *)addTableViewHeaderDay1 {
-
-    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20 , 65)];
-
-    UIView *borderTop = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , 1)];
-    borderTop.backgroundColor = UIColorFromRGB(0xdcdcdc);
-
-    UIView *borderBottom = [[UIView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width , 1)];
-    borderBottom.backgroundColor = UIColorFromRGB(0xdcdcdc);
-
-    [containerView addSubview:borderTop];
-    [containerView addSubview:borderBottom];
-
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, containerView.frame.size.width, 50)];
-    headerLabel.font = [DCLLightFont sharedInstance];
-    headerLabel.text = @"14TH SEPTEMBER 2013";
-    headerLabel.textColor = UIColorFromRGB(0x4b4745);
-    headerLabel.textAlignment = NSTextAlignmentCenter;
-    headerLabel.backgroundColor = [UIColor clearColor];
-
-    UIImage *arrowButtonRightImage = [UIImage imageNamed:@"arrow-right.png"];
-    UIButton *arrowButtonRight = [UIButton buttonWithType:UIButtonTypeCustom];
-
-    [arrowButtonRight setBackgroundImage:arrowButtonRightImage forState:UIControlStateNormal];
-    [arrowButtonRight setBackgroundImage:arrowButtonRightImage forState:UIControlStateHighlighted];
-
-    [arrowButtonRight setFrame:CGRectMake(containerView.frame.size.width - arrowButtonRightImage.size.width - 5, (50 - arrowButtonRightImage.size.height) / 2 + 1, arrowButtonRightImage.size.width, arrowButtonRightImage.size.height)];
-
-    [arrowButtonRight setTag:1];
-    [arrowButtonRight addTarget:self
-                         action:@selector(switchScrollView:)
-               forControlEvents:UIControlEventTouchDown];
-
-    [containerView addSubview:arrowButtonRight];
-
-
-    [containerView addSubview:headerLabel];
-
-    return containerView;
-}
-
--(UIView *)addTableViewHeaderDay2 {
-
-    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20, 65)];
-
-    UIView *borderTop = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , 1)];
-    borderTop.backgroundColor = UIColorFromRGB(0xdcdcdc);
-
-    UIView *borderBottom = [[UIView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width , 1)];
-    borderBottom.backgroundColor = UIColorFromRGB(0xdcdcdc);
-
-    [containerView addSubview:borderTop];
-    [containerView addSubview:borderBottom];
-
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, containerView.frame.size.width, 50)];
-    headerLabel.font = [DCLLightFont sharedInstance];
-    headerLabel.text = @"15TH SEPTEMBER 2013";
-    headerLabel.textColor = UIColorFromRGB(0x4b4745);
-    headerLabel.textAlignment = NSTextAlignmentCenter;
-    headerLabel.backgroundColor = [UIColor clearColor];
-
-    UIImage *arrowButtonLeftImage = [UIImage imageNamed:@"arrow-left.png"];
-    UIButton *arrowButtonLeft = [UIButton buttonWithType:UIButtonTypeCustom];
-
-    [arrowButtonLeft setBackgroundImage:arrowButtonLeftImage forState:UIControlStateNormal];
-    [arrowButtonLeft setBackgroundImage:arrowButtonLeftImage forState:UIControlStateHighlighted];
-
-    [arrowButtonLeft setFrame:CGRectMake(0 + 5, (50 - arrowButtonLeftImage.size.height) / 2 +1, arrowButtonLeftImage.size.width, arrowButtonLeftImage.size.height)];
-    [arrowButtonLeft setTag:2];
-    [arrowButtonLeft addTarget:self
-                        action:@selector(switchScrollView:)
-              forControlEvents:UIControlEventTouchDown];
-
-    [containerView addSubview:arrowButtonLeft];
-    
-    
-    [containerView addSubview:headerLabel];
-    
-    return containerView;
-}
-
-- (void)switchScrollView:(UIButton *)sender {
-    if (sender.tag == 1) {
-        CGRect frame = CGRectMake(320, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);
-        [_scrollView scrollRectToVisible:frame animated:YES];
-        _scrollView.frame = CGRectMake(_scrollView.frame.origin.x, _scrollView.frame.origin.y, _scrollView.frame.size.width, _day2.contentSize.height + 5);
-        _scrollView.contentSize = CGSizeMake(640, _scrollView.frame.size.height);
-        _outerScrollView.contentSize = CGSizeMake(320, _day2.contentSize.height + 30);
-
-    }
-    else {
-        CGRect frame = CGRectMake(0, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);
-        [_scrollView scrollRectToVisible:frame animated:YES];
-        _scrollView.frame = CGRectMake(_scrollView.frame.origin.x, _scrollView.frame.origin.y, _scrollView.frame.size.width, _day1.contentSize.height + 5);
-        _scrollView.contentSize = CGSizeMake(640, _scrollView.frame.size.height);
-        _outerScrollView.contentSize = CGSizeMake(320, _day1.contentSize.height + 30);
-
-    }
-}
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -177,7 +77,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {    
-    if(tableView == _day1) {
         if ([[self.firstFetchedResultsController sections] count] == 0) {
             return 0;
         }
@@ -185,17 +84,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
             id <NSFetchedResultsSectionInfo> sectionInfo = [self.firstFetchedResultsController sections][section];
             return [sectionInfo numberOfObjects];
         }
-    }
-    else {
-        if ([[self.secondFetchedResultsController sections] count] == 0) {
-            return 0;
-        }
-        else {
-            id <NSFetchedResultsSectionInfo> sectionInfo = [self.secondFetchedResultsController sections][section];
-            return [sectionInfo numberOfObjects];
-        }
-    }
-     
+            
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -203,19 +92,25 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
     
     Speaker *speaker;
-    if(tableView == _day1) {
-        speaker = [self.firstFetchedResultsController objectAtIndexPath:indexPath];
-    }
-    else {
-        speaker = [self.secondFetchedResultsController objectAtIndexPath:indexPath];
-    }
+    speaker = [self.firstFetchedResultsController objectAtIndexPath:indexPath];
+    
     
     static NSString *CellIdentifier = @"customCell";
     DCLSpeakerCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
-    cell.speakerName.text = [NSString stringWithFormat:@"%@ %@", speaker.firstName, speaker.lastName];
+    cell.speakerName.text = speaker.username; 
 
-    cell.userName.text = speaker.username;
+    if (speaker.firstName || speaker.lastName) {
+        if (!speaker.firstName) {
+            speaker.firstName = @"";
+        }
+
+        if (!speaker.lastName) {
+            speaker.lastName = @"";
+        }
+
+        cell.userName.text = [[NSString stringWithFormat:@"%@ %@", speaker.firstName, speaker.lastName] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    }
     cell.company.text = speaker.company;
 
     [cell.avatar setImageWithURL:[NSURL URLWithString:speaker.avatar] placeholderImage:[UIImage imageNamed:@"avatar.png"]];
@@ -227,29 +122,12 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    _scrollView.frame = CGRectMake(_scrollView.frame.origin.x, _scrollView.frame.origin.y, _scrollView.frame.size.width, _day1.contentSize.height + 5);
-    _scrollView.contentSize = CGSizeMake(640, _scrollView.frame.size.height);
-    _outerScrollView.contentSize = CGSizeMake(320, _day1.contentSize.height + 30);
+    _scrollView.frame = CGRectMake(_scrollView.frame.origin.x, _scrollView.frame.origin.y, 320, _day1.contentSize.height + 5);
+    _scrollView.contentSize = CGSizeMake(320, _scrollView.frame.size.height);
+    _outerScrollView.contentSize = CGSizeMake(320, _day1.contentSize.height + 10);
 
 
     return 85;
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if (scrollView == _scrollView) {
-        int page = _scrollView.contentOffset.x / _scrollView.frame.size.width;
-        if (page == 0) {
-            _scrollView.frame = CGRectMake(_scrollView.frame.origin.x, _scrollView.frame.origin.y, _scrollView.frame.size.width, _day1.contentSize.height + 5);
-            _outerScrollView.contentSize = CGSizeMake(320, _day1.contentSize.height + 30);
-
-        }
-        else {
-            _scrollView.frame = CGRectMake(_scrollView.frame.origin.x, _scrollView.frame.origin.y, _scrollView.frame.size.width, _day2.contentSize.height + 5);
-            _outerScrollView.contentSize = CGSizeMake(320, _day2.contentSize.height + 30);
-
-        }
-        _scrollView.contentSize = CGSizeMake(640, _scrollView.frame.size.height);
-    }
 }
 
 
@@ -270,14 +148,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
     [fetchRequest setReturnsObjectsAsFaults:NO];
 
-    NSSortDescriptor *sortSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"firstName" ascending:YES];
+    NSSortDescriptor *sortSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"username" ascending:YES];
 
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortSortDescriptor, nil];
 
     [fetchRequest setSortDescriptors:sortDescriptors];
-
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY session.day == 14"];
-    fetchRequest.predicate = predicate;
 
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
@@ -289,44 +164,6 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 	}
 
     return _firstFetchedResultsController;
-}
-
-- (NSFetchedResultsController *)secondFetchedResultsController
-{
-
-    if (_secondFetchedResultsController != nil) {
-        return _secondFetchedResultsController;
-    }
-
-    NSManagedObjectContext *context = [[SessionsDataModel sharedDataModel] mainContext];
-
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-
-    NSEntityDescription *entity = [Speaker entityInManagedObjectContext:context];
-
-    [fetchRequest setEntity:entity];
-
-    [fetchRequest setReturnsObjectsAsFaults:NO];
-
-    NSSortDescriptor *sortSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"firstName" ascending:YES];
-
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortSortDescriptor, nil];
-
-    [fetchRequest setSortDescriptors:sortDescriptors];
-
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY session.day == 15"];
-    fetchRequest.predicate = predicate;
-
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
-    aFetchedResultsController.delegate = self;
-    self.secondFetchedResultsController = aFetchedResultsController;
-
-	NSError *error = nil;
-	if (![self.secondFetchedResultsController performFetch:&error]) {
-        abort();
-	}
-    
-    return _secondFetchedResultsController;
 }
 
 -(void)viewWillAppear:(BOOL) animated {
@@ -353,14 +190,9 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
     }
     else {
-        _day1.tableHeaderView = [self addTableViewHeaderDay1];
-        _day2.tableHeaderView = [self addTableViewHeaderDay2];
-
         [self.firstFetchedResultsController performFetch:nil];
-        [self.secondFetchedResultsController performFetch:nil];
 
         [_day1 reloadData];
-        [_day2 reloadData];
 
     }
 }
@@ -382,6 +214,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
             Speaker *speaker = nil;
 
+            NSMutableSet *speakers = [[NSMutableSet alloc] init];
+
             for (NSDictionary *speakerDictionary in [dictionary objectForKey:@"speakers"]) {
                 NSInteger userId = [[speakerDictionary objectForKey:@"id"] intValue];
                 Speaker *speaker = [Speaker speakerWithServerId:userId usingManagedObjectContext:context];
@@ -390,6 +224,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
                     [speaker setServerId:[NSNumber numberWithInteger:userId]];
                 }
                 [speaker updateAttributes:speakerDictionary];
+                [speakers addObject:speaker];
+
             }
 
             NSInteger serverId = [[dictionary objectForKey:@"id"] intValue];
@@ -399,7 +235,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
                 [session setServerId:[NSNumber numberWithInteger:serverId]];
             }
 
-            [session updateAttributes:dictionary withSpeaker:speaker];
+            [session updateAttributes:dictionary withSpeakers:speakers];
 
             currentRecord++;
 
@@ -414,13 +250,9 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_hud setLabelText:@"Done!"];
                 [_hud hide:YES afterDelay:2.0];
-                _day1.tableHeaderView = [self addTableViewHeaderDay1];
-                _day2.tableHeaderView = [self addTableViewHeaderDay2];
                 [self.firstFetchedResultsController performFetch:nil];
-                [self.secondFetchedResultsController performFetch:nil];
 
                 [_day1 reloadData];
-                [_day2 reloadData];
 
             });
         } else {
@@ -435,16 +267,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Speaker *speaker;
-    if(tableView == _day1) {
-        speaker = [self.firstFetchedResultsController objectAtIndexPath:indexPath];
-    }
-    else {
-        speaker = [self.secondFetchedResultsController objectAtIndexPath:indexPath];
-    }
-
+    speaker = [self.firstFetchedResultsController objectAtIndexPath:indexPath];
+    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     DCLSpeakerViewController *detail = [[DCLSpeakerViewController alloc] initWithNibName:nil bundle:NULL];
-    detail.title = [NSString stringWithFormat:@"%@ %@", speaker.firstName, speaker.lastName];
+    detail.title = speaker.username;
     detail.speaker = speaker;
     [self.navigationController pushViewController:detail animated:YES];
 

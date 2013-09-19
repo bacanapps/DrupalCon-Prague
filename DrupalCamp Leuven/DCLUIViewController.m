@@ -36,7 +36,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 {
     [super viewDidLoad];
 
-    self.view.backgroundColor = UIColorFromRGB(0xf0f0f2);
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile.png"]];
 
     self.navigationItem.rightBarButtonItem = [self showFavoritesButton];
 }
@@ -48,8 +48,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 }
 
 - (UIBarButtonItem *)showFavoritesButton {
-    UIImage *favButtonImage = [UIImage imageNamed:@"fav.png"];
-    UIImage *favButtonImageActive = [UIImage imageNamed:@"fav.png"];
+    UIImage *favButtonImage = [UIImage imageNamed:@"fav_top.png"];
+    UIImage *favButtonImageActive = [UIImage imageNamed:@"fav_top.png"];
     UIButton *favButton = [UIButton buttonWithType:UIButtonTypeCustom];
 
     [favButton setBackgroundImage:favButtonImage forState:UIControlStateNormal];

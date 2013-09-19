@@ -6,6 +6,7 @@
 const struct SessionAttributes SessionAttributes = {
 	.body = @"body",
 	.day = @"day",
+	.extra = @"extra",
 	.fav = @"fav",
 	.from = @"from",
 	.level = @"level",
@@ -95,6 +96,13 @@ const struct SessionFetchedProperties SessionFetchedProperties = {
 
 
 @dynamic day;
+
+
+
+
+
+
+@dynamic extra;
 
 
 
@@ -280,6 +288,15 @@ const struct SessionFetchedProperties SessionFetchedProperties = {
 
 @dynamic speaker;
 
+	
+- (NSMutableSet*)speakerSet {
+	[self willAccessValueForKey:@"speaker"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"speaker"];
+  
+	[self didAccessValueForKey:@"speaker"];
+	return result;
+}
 	
 
 

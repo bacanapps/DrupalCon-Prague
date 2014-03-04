@@ -58,7 +58,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     self.navigationItem.leftBarButtonItem = customBarItem;
 
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width - 20, 240)];
-    backView.backgroundColor = [UIColor colorWithWhite:100 alpha:0.7];
+    backView.backgroundColor = SPEAKER_BACKGROUND_COLOR;
     [scroll addSubview:backView];
 
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 123, 123)];

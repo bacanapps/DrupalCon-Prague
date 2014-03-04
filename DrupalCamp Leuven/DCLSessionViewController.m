@@ -56,14 +56,14 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     self.navigationItem.leftBarButtonItem = customBarItem;
      
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width - 20, 240)];
-    backView.backgroundColor = [UIColor colorWithWhite:100 alpha:0.7];
+    backView.backgroundColor = SESSION_BACKGROUND_COLOR;
 
     [scroll addSubview:backView];
 
     UILabel *sessionTitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, [self getHeightForString:[_session.title uppercaseString] forWidth:(self.view.frame.size.width - 40) withFont:[UIFont fontWithName:@"PT Sans Narrow" size:24.0]])];
     sessionTitle.backgroundColor = [UIColor clearColor];
     sessionTitle.font = [UIFont fontWithName:@"PT Sans Narrow" size:24.0];
-    sessionTitle.textColor = UIColorFromRGB(0xc27575);
+    sessionTitle.textColor = SESSION_TITLE;
     sessionTitle.text = [_session.title uppercaseString];
     sessionTitle.numberOfLines = 0;
     [scroll addSubview:sessionTitle];

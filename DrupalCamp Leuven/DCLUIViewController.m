@@ -36,7 +36,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile.png"]];
+    self.view.backgroundColor = APP_BACKGROUND_COLOR;
 
     self.navigationItem.rightBarButtonItem = [self showFavoritesButton];
 }

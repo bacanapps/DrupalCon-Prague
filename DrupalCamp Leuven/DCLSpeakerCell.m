@@ -25,7 +25,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         self.backgroundColor = [UIColor clearColor];
 
         _containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 81)];
-        _containerView.backgroundColor = [UIColor colorWithWhite:100 alpha:0.7];
+        _containerView.backgroundColor = SPEAKER_BACKGROUND_COLOR;
         [self.contentView addSubview:_containerView];
 
         _avatar = [[UIImageView alloc] initWithFrame:CGRectMake(2.0f, 2.0f, 77.0f, 77.0f)];

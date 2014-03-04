@@ -42,7 +42,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile.png"]];
+    self.view.backgroundColor = APP_BACKGROUND_COLOR;
 
     self.navigationItem.rightBarButtonItem = [self showCloseFavoritesButton];
 
@@ -126,13 +126,13 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
 
     UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20 , 50)];
-    containerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile.png"]];
+    containerView.backgroundColor = APP_BACKGROUND_COLOR;
 
     UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , 9)];
-    maskView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile.png"]];;
+    maskView.backgroundColor = APP_BACKGROUND_COLOR;
 
     UIView *borderTop = [[UIView alloc] initWithFrame:CGRectMake(0, 9, self.view.frame.size.width , 1)];
-    borderTop.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile.png"]];
+    borderTop.backgroundColor = APP_BACKGROUND_COLOR;
 
    
 
@@ -144,7 +144,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     headerLabel.text = [NSString stringWithFormat:@"%@TH SEPTEMBER 2013", [sectionInfo name]];
     headerLabel.textColor = UIColorFromRGB(0x4b4745);
     headerLabel.textAlignment = NSTextAlignmentCenter;
-    headerLabel.backgroundColor = UIColorFromRGB(0xf0f0f2);
+    headerLabel.backgroundColor = FAVORITES_BACKGROUND_COLOR;
 
     [containerView addSubview:headerLabel];
     

@@ -248,6 +248,7 @@
 		22DC376017CCB0DE00973EC0 /* background-cell-speakers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-cell-speakers.png"; sourceTree = "<group>"; };
 		22DC376217CCB45900973EC0 /* avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar.png; sourceTree = "<group>"; };
 		22DC376317CCB45900973EC0 /* avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@2x.png"; sourceTree = "<group>"; };
+		2BF111CD18C6383B00AF03E9 /* DCLGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCLGlobal.h; sourceTree = "<group>"; };
 		451CAD1D51314DF88BB8B727 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		FACAF2D393DB465DA934D0E0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -374,6 +375,7 @@
 				22A3A016179A6B8400C5B12F /* Default.png */,
 				22A3A018179A6B8400C5B12F /* Default@2x.png */,
 				22A3A01A179A6B8400C5B12F /* Default-568h@2x.png */,
+				2BF111CD18C6383B00AF03E9 /* DCLGlobal.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -738,7 +740,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DrupalCamp Leuven/DrupalCon-Prefix.pch";
 				INFOPLIST_FILE = "DrupalCamp Leuven/DrupalCon-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = DrupalCon;
 				PROVISIONING_PROFILE = "30328E82-18FE-44AC-9F29-23CBD7A273CF";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "30328E82-18FE-44AC-9F29-23CBD7A273CF";
@@ -813,7 +815,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DrupalCamp Leuven/DrupalCon-Prefix.pch";
 				INFOPLIST_FILE = "DrupalCamp Leuven/DrupalCon-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = DrupalCon;
 				WRAPPER_EXTENSION = app;
 			};
@@ -828,7 +830,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DrupalCamp Leuven/DrupalCon-Prefix.pch";
 				INFOPLIST_FILE = "DrupalCamp Leuven/DrupalCon-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = DrupalCon;
 				PROVISIONING_PROFILE = "185D0A1D-914F-4F07-AE68-085F17FD8FCC";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "185D0A1D-914F-4F07-AE68-085F17FD8FCC";

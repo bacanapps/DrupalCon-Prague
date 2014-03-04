@@ -1,8 +1,5 @@
-ALWAYS_SEARCH_USER_PATHS = YES
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = ${PODS_HEADERS_SEARCH_PATHS}
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/MBProgressHUD" "${PODS_ROOT}/Headers/PHFRefreshControl" "${PODS_ROOT}/Headers/RegexKitLite" "${PODS_ROOT}/Headers/SDURLCache" "${PODS_ROOT}/Headers/TBMacros"
+OTHER_CFLAGS = $(inherited) "-isystem${PODS_ROOT}/Headers" "-isystem${PODS_ROOT}/Headers/AFNetworking" "-isystem${PODS_ROOT}/Headers/MBProgressHUD" "-isystem${PODS_ROOT}/Headers/PHFRefreshControl" "-isystem${PODS_ROOT}/Headers/RegexKitLite" "-isystem${PODS_ROOT}/Headers/SDURLCache" "-isystem${PODS_ROOT}/Headers/TBMacros"
 OTHER_LDFLAGS = -ObjC -licucore -framework CoreGraphics -framework MobileCoreServices -framework QuartzCore -framework Security -framework SystemConfiguration
-PODS_BUILD_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/AFNetworking" "${PODS_ROOT}/BuildHeaders/MBProgressHUD" "${PODS_ROOT}/BuildHeaders/PHFRefreshControl" "${PODS_ROOT}/BuildHeaders/RegexKitLite" "${PODS_ROOT}/BuildHeaders/SDURLCache"
-PODS_HEADERS_SEARCH_PATHS = ${PODS_PUBLIC_HEADERS_SEARCH_PATHS}
-PODS_PUBLIC_HEADERS_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/MBProgressHUD" "${PODS_ROOT}/Headers/PHFRefreshControl" "${PODS_ROOT}/Headers/RegexKitLite" "${PODS_ROOT}/Headers/SDURLCache"
 PODS_ROOT = ${SRCROOT}/Pods

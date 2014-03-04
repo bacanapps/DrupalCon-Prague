@@ -571,7 +571,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         cell.backgroundColor = [UIColor clearColor];
         UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 46)];
-        containerView.backgroundColor = UIColorFromRGB(0x5c463a);
+        containerView.backgroundColor = TIME_SLOT_ITEM;
         [cell.contentView addSubview:containerView];
 
         UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(10, 12, 280, 20)];
@@ -922,6 +922,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         NSInteger totalRecords = [sessions count];
         NSInteger currentRecord = 0;
+        
+        
+        NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];
+        [context setPersistentStoreCoordinator:[[SessionsDataModel sharedDataModel] persistentStoreCoordinator]];
 
         for (NSDictionary *dictionary in sessions) {
 
@@ -930,9 +934,9 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
             for (NSDictionary *speakerDictionary in [dictionary objectForKey:@"speakers"]) {
                 NSInteger userId = [[speakerDictionary objectForKey:@"id"] intValue];
-                speaker = [Speaker speakerWithServerId:userId usingManagedObjectContext:self.moc];
+                speaker = [Speaker speakerWithServerId:userId usingManagedObjectContext:context];
                 if (speaker == nil) {
-                    speaker = [Speaker insertInManagedObjectContext:self.moc];
+                    speaker = [Speaker insertInManagedObjectContext:context];
                     [speaker setServerId:[NSNumber numberWithInteger:userId]];
                 }
                 [speaker updateAttributes:speakerDictionary];
@@ -940,9 +944,9 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
             }
             
             NSInteger serverId = [[dictionary objectForKey:@"id"] intValue];
-            Session *session = [Session eventWithServerId:serverId usingManagedObjectContext:self.moc];
+            Session *session = [Session eventWithServerId:serverId usingManagedObjectContext:context];
             if (session == nil) {
-                session = [Session insertInManagedObjectContext:self.moc];
+                session = [Session insertInManagedObjectContext:context];
                 [session setServerId:[NSNumber numberWithInteger:serverId]];
             }
 
@@ -957,7 +961,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         }
 
         NSError *error = nil;
-        if ([self.moc save:&error]) {
+        if ([context save:&error]) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_hud setLabelText:@"Done!"];
                 [_hud hide:YES afterDelay:2.0];

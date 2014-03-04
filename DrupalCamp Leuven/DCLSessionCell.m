@@ -25,7 +25,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         self.backgroundColor = [UIColor clearColor];
 
         _containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 94)];
-        _containerView.backgroundColor = [UIColor colorWithWhite:100 alpha:0.7];
+        _containerView.backgroundColor = SESSION_BACKGROUND_COLOR;
         [self.contentView addSubview:_containerView];
 
         _sessionTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 12, 280, 20)];
